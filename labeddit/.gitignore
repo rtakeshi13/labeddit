@@ -32,9 +32,3 @@ package-lock.json
 /src/serviceWorker.js
 /src/setupTests.js
 /src (copy)
-/src/components/*/styles.js
-/src/components/*/*.png
-/src/components/styles
-/src/App.styles.js
-/src/functions
-/src/hooks
