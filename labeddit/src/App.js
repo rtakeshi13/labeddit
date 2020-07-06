@@ -1,11 +1,8 @@
 import React from 'react';
+import Router from './components/Router'
 
 function App() {
-  return (
-    <div>
-      Labeddit9
-    </div>
-  );
+  return <Router/>
 }
 
 export default App;
