@@ -6,6 +6,7 @@ import PostPage from "./components/PostPage";
 import FeedPage from "./components/FeedPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import HomePage from "./components/HomePage";
 
 const Router = () => {
   return (
@@ -13,6 +14,9 @@ const Router = () => {
       <Header />
       <Switch>
         <Route exact path="/">
+          <HomePage />
+        </Route>
+        <Route exact path="/login">
           <LoginPage />
         </Route>
         <Route exact path="/signup">
