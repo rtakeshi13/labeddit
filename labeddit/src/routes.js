@@ -1,11 +1,11 @@
 import React from "react";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
-import LoginPage from "../LoginPage";
-import SignupPage from "../SignupPage";
-import PostPage from "../PostPage";
-import FeedPage from "../FeedPage";
-import Header from "../Header";
-import Footer from "../Footer";
+import LoginPage from "./components/LoginPage";
+import SignupPage from "./components/SignupPage";
+import PostPage from "./components/PostPage";
+import FeedPage from "./components/FeedPage";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 const Router = () => {
   return (
