@@ -115,6 +115,7 @@ const LoginPage = () => {
         </Typography>
       </Box>
     </Container>
+
   );
 };
 
