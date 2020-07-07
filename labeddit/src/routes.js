@@ -17,8 +17,8 @@ const Router = () => {
         <Route exact path="/" component={HomePage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/signup" component={SignupPage} />
-        <ProtectedRoute exact path="/feed" component={FeedPage} />
-        <ProtectedRoute exact path="/post/:postId" component={PostPage} />
+        <ProtectedRoute exact path="/posts" component={FeedPage} />
+        <ProtectedRoute exact path="/posts/:postId" component={PostPage} />
       </Switch>
       <Footer />
     </BrowserRouter>

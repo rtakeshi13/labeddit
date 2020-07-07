@@ -13,7 +13,7 @@ const LoginPage = () => {
     const response = await login(form);
     if (response.token) {
       localStorage.setItem("labeddit", JSON.stringify(response));
-      history.push("/feed");
+      history.push("/posts");
     } else {
       window.alert(response.message);
     }

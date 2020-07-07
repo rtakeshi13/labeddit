@@ -5,6 +5,9 @@ import { Helmet } from "react-helmet-async";
 
 const FeedPage = () => {
   const [posts, getPosts] = usePosts();
+  const history = useHistory();
+
+  const handlePostClick = (postId) => history.push(`posts/${postId}`);
 
   return (
     <div>
@@ -13,7 +16,9 @@ const FeedPage = () => {
       </Helmet>
       Feed
       {posts.map((post) => (
-        <p key={post.id}>{post.title}</p>
+        <p key={post.id} onClick={() => handlePostClick(post.id)}>
+          {post.title}
+        </p>
       ))}
     </div>
   );
