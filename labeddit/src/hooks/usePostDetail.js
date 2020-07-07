@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { getPostDetail } from "../functions/axios";
 
-const usePostDetail = () => {
+const usePostDetail = (postId) => {
   const [postDetail, setPostDetail] = useState();
 
-  const requestPostDetail = async () => {
-    const response = await getPostDetail();
+  const requestPostDetail = async (id) => {
+    const response = await getPostDetail(id);
     setPostDetail(response);
   };
 
   useEffect(() => {
-    requestPostDetail();
-  }, []);
+    requestPostDetail(postId);
+  }, [postId]);
 
   return [postDetail, requestPostDetail];
 };

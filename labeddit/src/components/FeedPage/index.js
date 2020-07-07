@@ -1,9 +1,27 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
+import usePosts from "../../hooks/usePosts";
+import { Helmet } from "react-helmet-async";
 
-const FeedPage = ()=>{
+const FeedPage = () => {
+  const [posts, getPosts] = usePosts();
+  const history = useHistory();
 
-    return <div>Feed</div>
-}
+  const handlePostClick = (postId) => history.push(`posts/${postId}`);
 
-export default FeedPage
+  return (
+    <div>
+      <Helmet>
+        <title>Feed</title>
+      </Helmet>
+      Feed
+      {posts.map((post) => (
+        <p key={post.id} onClick={() => handlePostClick(post.id)}>
+          {post.title}
+        </p>
+      ))}
+    </div>
+  );
+};
+
+export default FeedPage;
