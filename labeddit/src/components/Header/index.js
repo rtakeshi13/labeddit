@@ -1,9 +1,21 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 
-const Header = ()=>{
+const Header = () => {
+  const history = useHistory();
+  return (
+    <div>
+      Header
+      <button
+        onClick={() => {
+          localStorage.removeItem("labeddit");
+          history.push("/login");
+        }}
+      >
+        Logout
+      </button>
+    </div>
+  );
+};
 
-    return <div>Header</div>
-}
-
-export default Header
+export default Header;

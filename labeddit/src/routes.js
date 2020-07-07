@@ -7,27 +7,18 @@ import FeedPage from "./components/FeedPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const Router = () => {
   return (
     <BrowserRouter>
       <Header />
       <Switch>
-        <Route exact path="/">
-          <HomePage />
-        </Route>
-        <Route exact path="/login">
-          <LoginPage />
-        </Route>
-        <Route exact path="/signup">
-          <SignupPage />
-        </Route>
-        <Route exact path="/feed">
-          <FeedPage />
-        </Route>
-        <Route exact path="/post/:postId">
-          <PostPage />
-        </Route>
+        <Route exact path="/" component={HomePage} />
+        <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/signup" component={SignupPage} />
+        <ProtectedRoute exact path="/feed" component={FeedPage} />
+        <ProtectedRoute exact path="/post/:postId" component={PostPage} />
       </Switch>
       <Footer />
     </BrowserRouter>
