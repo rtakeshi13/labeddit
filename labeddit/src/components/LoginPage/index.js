@@ -23,7 +23,7 @@ const LoginPage = () => {
     <div>
       <Helmet>
         <title>Login</title>
-      </Helmet>
+      </Helmet> 
       Login
       <form onSubmit={handleFormSubmit}>
         <input name="email" type="email" onChange={handleFormChange} required />
