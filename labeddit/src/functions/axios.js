@@ -7,7 +7,7 @@ export const signup = async (body) => {
     const response = await axios.post(`${baseUrl}/signup`, body);
     return response.data;
   } catch (error) {
-    console.log(error);
+    return error.response.data;
   }
 };
 
