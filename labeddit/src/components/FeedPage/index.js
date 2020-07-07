@@ -11,6 +11,11 @@ const FeedPage = () => {
 
   return (
     <div>
+      <form>
+        <input/>
+        <button>Postar</button>
+      </form>
+
       <Helmet>
         <title>Feed</title>
       </Helmet>
