@@ -29,7 +29,7 @@ const SignupPage = ()=>{
         <form onSubmit={handleFormSubmit}>
             <input
             type="text"
-            name="nome"
+            name="username"
             placeholder="Nome de usuário"
             onChange={handleFormChange}
 
@@ -43,7 +43,7 @@ const SignupPage = ()=>{
             />
             <input
             type="password"
-            name="passsord"
+            name="password"
             placeholder="Senha"
             onChange={handleFormChange}
 
