@@ -1,22 +1,58 @@
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
+
 import usePostDetail from "../../hooks/usePostDetail";
-import PostCard from "../PostCard/index"
+import PostCard from "../PostCard"
+import CommentCard from "../CommentCard"
+
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    justifyContent: "center",
+    alignItems: "center",
+    height: "80vh",
+  },
+}));
+
 
 const PostPage = () => {
+  const classes = useStyles()
   const { postId } = useParams();
   const [post] = usePostDetail(postId);
   const history = useHistory();
 
-  return post ? <PostCard
-                    postId={post.id}
-                    userName={post.username}
-                    title={post.title}
-                    text={post.text}
-                    commentsCount={post.commentsCount}
-                
-                />
-                : null;
+  return post ? (
+                <div>
+                    <PostCard
+                        key={post.id}
+                        postId={post.id}
+                        userName={post.username}
+                        title={post.title}
+                        text={post.text}
+                        commentsCount={post.commentsCount}
+                        votesCount={post.votesCount}
+                    />
+                    {post.comments.map(comment => {
+                        return (
+                        <CommentCard
+                            key={comment.id}
+                            userName={comment.username}
+                            text={comment.text}
+                            votesCount={comment.votesCount}
+                        
+                        />
+                        )
+                        
+                    })}
+                </div>
+                ) : (
+                      <div className={classes.root}>
+                        <CircularProgress color="secondary"/>
+                      </div>  
+                    )    
 };
 
 export default PostPage;

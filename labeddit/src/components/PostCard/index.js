@@ -1,16 +1,22 @@
-import React from "react";
-import { Wrapper } from './styles'
+import React, { useContext } from "react";
+import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
+
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
+import Container from "@material-ui/core/Container";
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { useHistory } from "react-router-dom";
 
-const useStyles = makeStyles({
+import { languages } from "../../languages";
+import LanguageContext from "../../contexts/LanguageContext";
+
+
+const useStyles = makeStyles((theme) => ({
     root: {
-      width: "50%",  
+      marginTop: theme.spacing(8),
+      width: "100%",  
       minWidth: 275,
     },
     title: {
@@ -19,18 +25,19 @@ const useStyles = makeStyles({
     pos: {
       marginBottom: 12,
     },
-  });
+  }));
   
 
 const PostCard = (props) => {
+  const selectedLanguage = useContext(LanguageContext);
   const classes = useStyles();
   const history = useHistory();
 
 
   return (
-    <Wrapper>
+    <Container component="main" maxWidth="sm" >
         <Card className={classes.root} variant="outlined">
-          <CardContent>
+          <CardContent className={classes.content}>
               <Typography className={classes.title} color="textSecondary" gutterBottom>
                   {props.userName}
               </Typography>
@@ -40,13 +47,14 @@ const PostCard = (props) => {
               <Typography className={classes.pos} variant="body2" component="p">
                   {props.text}
               </Typography>
-              <hr/>
               <CardActions>
-                  <Typography>{props.commentsCount} comentários</Typography>
+                  <Typography>
+                      {props.commentsCount} {languages[selectedLanguage].commentCounterText}
+                  </Typography>
               </CardActions>
           </CardContent>
         </Card>
-    </Wrapper>
+    </Container>
   );
 };
 

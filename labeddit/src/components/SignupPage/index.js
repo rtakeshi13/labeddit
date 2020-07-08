@@ -1,7 +1,32 @@
 import React from "react";
 import useForm from "../../hooks/useForm";
 import { signup } from "../../functions/axios";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+import TextField from "@material-ui/core/TextField";
+import Container from "@material-ui/core/Container";
+import { makeStyles } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
+
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    marginTop: theme.spacing(8),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  avatar: {
+    margin: theme.spacing(1),
+    backgroundColor: theme.palette.secondary.main,
+  },
+  form: {
+    width: "100%", // Fix IE 11 issue.
+    marginTop: theme.spacing(1),
+  },
+  submit: {
+    margin: theme.spacing(3, 0, 2),
+  },
+}));
 
 
 
@@ -24,31 +49,31 @@ const SignupPage = ()=>{
 
 
 
-    return <div>
+    return <Container component="main" maxWidth="xs">
 
         <form onSubmit={handleFormSubmit}>
-            <input
+            <TextField id="outlined-basic" variant="outlined"
             type="text"
             name="username"
             placeholder="Nome de usuário"
             onChange={handleFormChange}
 
             />
-            <input
+            <TextField id="outlined-basic" variant="outlined"
             type="email"
             name="email"
             placeholder="E-mail"
             onChange={handleFormChange}
             
             />
-            <input
+            <TextField id="outlined-basic" variant="outlined"
             type="password"
             name="password"
             placeholder="Senha"
             onChange={handleFormChange}
 
             />
-            <button onClick={() => history.push("/signup")}>Cadastrar</button>
+            <Button variant="contained" type="submit" onClick={() => history.push("/signup")}>Cadastrar</Button>
         </form>
 
      
@@ -56,7 +81,7 @@ const SignupPage = ()=>{
 
 
 
-    </div>
+    </Container>
 }
 
 export default SignupPage
