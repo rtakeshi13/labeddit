@@ -1,16 +1,17 @@
 import React, { useContext } from "react";
-import { Wrapper } from './styles'
+import { useHistory } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
+
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Container from "@material-ui/core/Container";
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import { useHistory } from "react-router-dom";
+
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
-import { findByLabelText } from "@testing-library/react";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -36,7 +37,7 @@ const PostCard = (props) => {
   return (
     <Container component="main" maxWidth="sm" >
         <Card className={classes.root} variant="outlined">
-          <CardContent>
+          <CardContent className={classes.content}>
               <Typography className={classes.title} color="textSecondary" gutterBottom>
                   {props.userName}
               </Typography>
@@ -46,7 +47,6 @@ const PostCard = (props) => {
               <Typography className={classes.pos} variant="body2" component="p">
                   {props.text}
               </Typography>
-              <hr/>
               <CardActions>
                   <Typography>
                       {props.commentsCount} {languages[selectedLanguage].commentCounterText}
