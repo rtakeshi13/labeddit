@@ -41,10 +41,8 @@ const FeedPage = () => {
         }
     };
 
-   
 
   const handlePostClick = (postId) => history.push(`posts/${postId}`);
-
 
 
   return (
