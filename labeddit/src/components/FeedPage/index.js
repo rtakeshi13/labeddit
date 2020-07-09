@@ -10,33 +10,38 @@ import Container from "@material-ui/core/Container";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { createPost } from '../../functions/axios'
+import { FormControlLabel } from "@material-ui/core";
 
+const FormContainer = styled.form`
+display: grid;
+justify-items: center;
+margin-top: 20px;
 
+`
 
 const FeedPage = () => {
-  const FormContainer = styled.form`
-    display: grid;
-    justify-items: center;
-    margin-top: 20px;
-    
-`
-  const [posts] = usePosts();
+ 
+  const [posts, getPosts] = usePosts();
   const history = useHistory();
 
 
   const [form, handleFormChange] = useForm({ text: "", title: "" });
+  console.log(form)
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         const response = await createPost(form);
-        if (response.token) {
-          localStorage.setItem("labeddit", JSON.stringify(response));
-          history.push("/posts");
+        console.log(response)
+        if (response) {
+          getPosts();
+          alert("Post criado com sucesso")
+          
         } else {
-          window.alert(response.message);
+          alert("Erro ao criar Post")
         }
     };
 
+   
 
   const handlePostClick = (postId) => history.push(`posts/${postId}`);
 
@@ -45,8 +50,8 @@ const FeedPage = () => {
   return (
     <div>
 
-      <form onSubmit={handleFormSubmit}>
-          <FormContainer>
+      
+          <FormContainer onSubmit={handleFormSubmit}>
             <p>
               <TextField id="outlined-basic" variant="outlined"
               placeholder="Escrever post"
@@ -66,11 +71,11 @@ const FeedPage = () => {
             </p>
             
             <p>
-              <Button variant="contained" type="submit" onClick={handlePostClick}>Postar</Button>
+              <Button type="submit" variant="contained">Postar</Button>
             </p>
           </FormContainer>
           
-      </form>
+     
 
       
 
