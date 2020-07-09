@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { createPost } from '../../functions/axios'
 import { FormControlLabel } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const FormContainer = styled.form`
 display: grid;
@@ -18,11 +19,20 @@ justify-items: center;
 margin-top: 20px;
 
 `
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+  },
+}));
 
 const FeedPage = () => {
  
   const [posts, getPosts] = usePosts();
   const history = useHistory();
+  const classes = useStyles();
 
 
   const [form, handleFormChange] = useForm({ text: "", title: "" });
@@ -43,11 +53,8 @@ const FeedPage = () => {
 
    
 
-  const handlePostClick = (postId) => history.push(`posts/${postId}`);
 
-
-
-  return (
+  return posts.length > 0 ? (
     <div>
 
       
@@ -95,6 +102,10 @@ const FeedPage = () => {
           feedpage
         />
       ))}
+    </div>
+  ) : (
+    <div className={classes.root}>
+      <CircularProgress color="secondary" />
     </div>
   );
 };
