@@ -44,6 +44,7 @@ const PostPage = () => {
         commentsCount={post.commentsCount}
         votesCount={post.votesCount}
         userVoteDirection={post.userVoteDirection}
+        createdAt={post.createdAt}
       />
       {post.comments.map((comment) => (
         <CommentCard key={comment.id} postId={post.id} comment={comment} />
