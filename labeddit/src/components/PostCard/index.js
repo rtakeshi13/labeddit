@@ -2,11 +2,21 @@ import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 
+import {
+    WhatsappShareButton,
+    WhatsappIcon,
+    FacebookIcon,
+    FacebookShareButton,
+    FacebookMessengerShareButton,
+    FacebookMessengerIcon,
+    TwitterIcon,
+    TwitterShareButton,
+    EmailIcon,
+    EmailShareButton,
+} from 'react-share'
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Container from "@material-ui/core/Container";
-import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import { languages } from "../../languages";
@@ -17,6 +27,15 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
 `;
+
+const CardFooter = styled.div`
+    display: flex;
+    justify-content: space-around;
+
+    div > *{
+        margin: 4px;
+    }
+`
 
 const Comments = styled(Typography)``;
 
@@ -48,6 +67,9 @@ const PostCard = (props) => {
   const classes = useStyles();
   const history = useHistory();
 
+  const shareUrl = window.location.href
+  const title = "labeddit"
+
   const handleCommentClick = (postId) => history.push(`posts/${postId}`);
 
   return (
@@ -76,10 +98,44 @@ const PostCard = (props) => {
               {props.title}
             </Typography>
             <Typography className={classes.text}>{props.text}</Typography>
-            <Comments variant="subtitle2">
-              {props.commentsCount}{" "}
-              {languages[selectedLanguage].commentCounterText}
-            </Comments>
+            <CardFooter>
+                <div>
+                    <FacebookShareButton
+                        url={shareUrl}
+                        title={title}
+                        separator=":: "
+                    >
+                        <FacebookIcon size={24} round />
+                    </FacebookShareButton>
+                    <FacebookMessengerShareButton
+                        url={shareUrl}
+                        title={title}
+                        separator=":: "
+                    >
+                        <FacebookMessengerIcon size={24} round />
+                    </FacebookMessengerShareButton>
+                    <WhatsappShareButton
+                        url={shareUrl}
+                        title={title}
+                        separator=":: "
+                    >
+                        <WhatsappIcon size={24} round />
+                    </WhatsappShareButton>
+                    <TwitterShareButton
+                        url={shareUrl}
+                        title={title}
+                        separator=":: "
+                    >
+                        <TwitterIcon size={24} round />
+                    </TwitterShareButton>
+                </div>
+
+                <Comments variant="subtitle2">
+                  {props.commentsCount}{" "}
+                  {languages[selectedLanguage].commentCounterText}
+                </Comments>
+            </CardFooter>
+            
           </Content>
         </Wrapper>
       </Card>
