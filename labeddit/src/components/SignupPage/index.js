@@ -11,7 +11,7 @@ import TextField from "@material-ui/core/TextField";
 
 const SignupPage = () => {
   const history = useHistory();
-  const selectedLanguage = useContext(LanguageContext);
+  const [selectedLanguage] = useContext(LanguageContext);
 
   const [form, handleFormChange] = useForm({
     email: "",
@@ -36,25 +36,33 @@ const SignupPage = () => {
         <title>{languages[selectedLanguage].signupLabel}</title>
       </Helmet>
       <form onSubmit={handleFormSubmit}>
-        <TextField id="outlined-basic" variant="outlined" 
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
           type="text"
           name="username"
-          placeholder="Nome de usuário"
+          placeholder={languages[selectedLanguage].usernameLabel}
           onChange={handleFormChange}
         />
-        <TextField id="outlined-basic" variant="outlined"
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
           type="email"
           name="email"
-          placeholder="E-mail"
+          placeholder={languages[selectedLanguage].emailLabel}
           onChange={handleFormChange}
         />
-        <TextField id="outlined-basic" variant="outlined"
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
           type="password"
           name="password"
-          placeholder="Senha"
+          placeholder={languages[selectedLanguage].passwordLabel}
           onChange={handleFormChange}
         />
-        <Button variant="contained" >{languages[selectedLanguage].signupLabel}</Button>
+        <Button variant="contained">
+          {languages[selectedLanguage].signupLabel}
+        </Button>
       </form>
     </Container>
   );
