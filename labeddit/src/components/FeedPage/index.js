@@ -1,24 +1,28 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
 import usePosts from "../../hooks/usePosts";
 import { Helmet } from "react-helmet-async";
+import PostCard from "../PostCard";
 
 const FeedPage = () => {
-  const [posts, getPosts] = usePosts();
-  const history = useHistory();
-
-  const handlePostClick = (postId) => history.push(`posts/${postId}`);
+  const [posts] = usePosts();
 
   return (
     <div>
       <Helmet>
         <title>Feed</title>
       </Helmet>
-      Feed
       {posts.map((post) => (
-        <p key={post.id} onClick={() => handlePostClick(post.id)}>
-          {post.title}
-        </p>
+        <PostCard
+          key={post.id}
+          postId={post.id}
+          userName={post.username}
+          title={post.title}
+          text={post.text}
+          commentsCount={post.commentsCount}
+          votesCount={post.votesCount}
+          userVoteDirection={post.userVoteDirection}
+          feedpage
+        />
       ))}
     </div>
   );

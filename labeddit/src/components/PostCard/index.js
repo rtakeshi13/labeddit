@@ -12,6 +12,15 @@ import Typography from "@material-ui/core/Typography";
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
 import KarmaCounter from "../KarmaCounter";
+import styled from "styled-components";
+
+const Wrapper = styled.div`
+  display: flex;
+`;
+
+const Comments = styled(Typography)`
+  cursor: ${({ feedpage }) => feedpage && "pointer"};
+`;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,37 +39,47 @@ const useStyles = makeStyles((theme) => ({
 const PostCard = (props) => {
   const selectedLanguage = useContext(LanguageContext);
   const classes = useStyles();
+  const history = useHistory();
+
+  const handleCommentClick = (postId) => history.push(`posts/${postId}`);
 
   return (
     <Container component="main" maxWidth="sm">
       <Card className={classes.root} variant="outlined">
-        <CardContent className={classes.content}>
-          <Typography
-            className={classes.title}
-            color="textSecondary"
-            gutterBottom
-          >
-            {props.userName}
-          </Typography>
-          <Typography className={classes.pos} variant="h5" component="h2">
-            {props.title}
-          </Typography>
-          <Typography className={classes.pos} variant="body2" component="p">
-            {props.text}
-          </Typography>
-          <CardActions>
-            <Typography>
-              {props.commentsCount}{" "}
-              {languages[selectedLanguage].commentCounterText}
+        <Wrapper>
+          <KarmaCounter
+            userVoteDirection={props.userVoteDirection}
+            votesCount={props.votesCount}
+            postId={props.postId}
+          />
+          <CardContent className={classes.content}>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              {props.userName}
             </Typography>
-          </CardActions>
-        </CardContent>
+            <Typography className={classes.pos} variant="h5" component="h2">
+              {props.title}
+            </Typography>
+            <Typography className={classes.pos} variant="body2" component="p">
+              {props.text}
+            </Typography>
+            <CardActions>
+              <Comments
+                feedpage={props.feedpage ? 1 : 0}
+                onClick={
+                  props.feedpage ? () => handleCommentClick(props.postId) : null
+                }
+              >
+                {props.commentsCount}{" "}
+                {languages[selectedLanguage].commentCounterText}
+              </Comments>
+            </CardActions>
+          </CardContent>
+        </Wrapper>
       </Card>
-      <KarmaCounter
-        userVoteDirection={props.userVoteDirection}
-        votesCount={props.votesCount}
-        postId={props.postId}
-      />
     </Container>
   );
 };

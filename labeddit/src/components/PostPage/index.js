@@ -8,6 +8,8 @@ import CommentCard from "../CommentCard";
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
+import { Helmet } from "react-helmet-async";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
@@ -25,6 +27,9 @@ const PostPage = () => {
 
   return post ? (
     <div>
+      <Helmet>
+        <title>{post.title}</title>
+      </Helmet>
       <PostCard
         key={post.id}
         postId={post.id}
@@ -42,6 +47,9 @@ const PostPage = () => {
             userName={comment.username}
             text={comment.text}
             votesCount={comment.votesCount}
+            postId={post.id}
+            commentId={comment.id}
+            userVoteDirection={comment.userVoteDirection}
           />
         );
       })}
