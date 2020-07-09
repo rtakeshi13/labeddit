@@ -17,17 +17,24 @@ const FormContainer = styled.form`
 display: grid;
 justify-items: center;
 margin-top: 20px;
-
 `
+const useStyles = makeStyles((theme) => ({
+    root: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh",
+    },
+  }));
 
 const FeedPage = () => {
- 
+  const classes = useStyles() 
   const [posts, getPosts] = usePosts();
   const history = useHistory();
 
 
   const [form, handleFormChange] = useForm({ text: "", title: "" });
-  console.log(form)
+  console.log(posts)
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
