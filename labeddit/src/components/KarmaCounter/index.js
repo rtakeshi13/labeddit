@@ -4,6 +4,8 @@ import { karmaReducer } from "../../functions/karmaReducer";
 import { votePost, voteComment } from "../../functions/axios";
 
 const CounterWrapper = styled.div`
+  width: 5%;
+  align-items: center;
   display: flex;
   flex-direction: column;
   margin-left: 10px;
@@ -18,7 +20,7 @@ const UpvoteButton = styled.span`
 
 const DownvoteButton = styled.span`
   color: ${({ voted }) => (voted ? "red" : "black")};
-  font-size: 2.5em;
+  font-size: 2em;
   cursor: pointer;
   margin-top: -10px;
   margin-left: 0px;

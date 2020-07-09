@@ -21,6 +21,7 @@ const Wrapper = styled.div`
 const Comments = styled(Typography)``;
 
 const Content = styled(CardContent)`
+  width: 100%;
   cursor: ${({ feedpage }) => feedpage && "pointer"};
 `;
 
@@ -60,7 +61,6 @@ const PostCard = (props) => {
           />
           <Content
             feedpage={props.feedpage ? 1 : 0}
-            className={classes.content}
             onClick={
               props.feedpage ? () => handleCommentClick(props.postId) : null
             }
