@@ -37,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const LoginPage = () => {
-  const selectedLanguage = useContext(LanguageContext);
+  const [selectedLanguage] = useContext(LanguageContext);
   const classes = useStyles();
   const history = useHistory();
   const [form, handleFormChange] = useForm({ email: "", password: "" });

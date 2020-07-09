@@ -65,7 +65,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PostCard = (props) => {
-  const selectedLanguage = useContext(LanguageContext);
+  const [selectedLanguage] = useContext(LanguageContext);
   const classes = useStyles();
   const history = useHistory();
 
