@@ -13,13 +13,13 @@ const CounterWrapper = styled.div`
 `;
 
 const UpvoteButton = styled.span`
-  color: ${({ voted }) => (voted ? "green" : "black")};
+  color: ${({ voted }) => (voted ? "#ff8b60" : "black")};
   font-size: 2em;
   cursor: pointer;
 `;
 
 const DownvoteButton = styled.span`
-  color: ${({ voted }) => (voted ? "red" : "black")};
+  color: ${({ voted }) => (voted ? "#9494ff" : "black")};
   font-size: 2em;
   cursor: pointer;
   margin-top: -10px;
@@ -27,6 +27,8 @@ const DownvoteButton = styled.span`
 `;
 
 const VotesCount = styled.span`
+  color: ${({ direction }) =>
+    !direction ? "black" : direction === 1 ? "#ff8b60" : "#9494ff"};
   font-size: 1.4em;
   margin-left: 2px;
 `;
@@ -63,7 +65,9 @@ const KarmaCounter = (props) => {
       >
         +
       </UpvoteButton>
-      <VotesCount>{state.votesCount}</VotesCount>
+      <VotesCount direction={state.userVoteDirection}>
+        {state.votesCount}
+      </VotesCount>
       <DownvoteButton
         voted={state.userVoteDirection === -1 ? true : false}
         onClick={downvote}
