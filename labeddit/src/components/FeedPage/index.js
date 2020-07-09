@@ -11,6 +11,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import { createPost } from '../../functions/axios'
 import { FormControlLabel } from "@material-ui/core";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const FormContainer = styled.form`
 display: grid;
@@ -45,7 +46,7 @@ const FeedPage = () => {
   const handlePostClick = (postId) => history.push(`posts/${postId}`);
 
 
-  return (
+  return posts.length > 0 ? (
     <div>
 
       
@@ -93,6 +94,10 @@ const FeedPage = () => {
           feedpage
         />
       ))}
+    </div>
+  ) : (
+    <div className={classes.root}>
+      <CircularProgress color="secondary" />
     </div>
   );
 };
