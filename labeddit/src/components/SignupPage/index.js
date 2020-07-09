@@ -1,11 +1,13 @@
 import React from "react";
 import useForm from "../../hooks/useForm";
 import { signup } from "../../functions/axios";
-import { useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom';
+
 
 
 
 const SignupPage = ()=>{
+
     const history = useHistory();
 
     const [form, handleFormChange] = useForm({ email: "", password: "", username: "" });
@@ -22,9 +24,9 @@ const SignupPage = ()=>{
     };
 
 
-
-
     return <div>
+
+      
 
         <form onSubmit={handleFormSubmit}>
             <input
