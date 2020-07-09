@@ -29,10 +29,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const FeedPage = () => {
-  const [posts, getPosts, resetForm] = usePosts();
+  const [posts, getPosts] = usePosts();
   const history = useHistory();
   const classes = useStyles();
-  const [form, handleFormChange] = useForm({ text: "", title: "" });
+  const [form, handleFormChange, resetForm] = useForm({ text: "", title: "" });
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -45,7 +45,7 @@ const FeedPage = () => {
       alert("Erro ao criar Post");
     }
   };
-  console.log("oi");
+
   return posts.length > 0 ? (
     <div>
       <Helmet>
@@ -54,6 +54,7 @@ const FeedPage = () => {
 
       <FormContainer onSubmit={handleFormSubmit}>
         <TextField
+          value={form.text}
           id="outlined-basic"
           variant="outlined"
           placeholder="Escrever post"
