@@ -67,6 +67,7 @@ export const votePost = async (postId, direction) => {
     return response.data.success;
   } catch (error) {
     console.log(error);
+    return error.response;
   }
 };
 
