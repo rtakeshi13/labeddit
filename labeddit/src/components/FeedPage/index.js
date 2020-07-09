@@ -54,6 +54,12 @@ const FeedPage = () => {
 
 
   const handlePostClick = (postId) => history.push(`posts/${postId}`);
+import usePosts from "../../hooks/usePosts";
+import { Helmet } from "react-helmet-async";
+import PostCard from "../PostCard";
+
+const FeedPage = () => {
+  const [posts] = usePosts();
 
 
 
@@ -101,6 +107,29 @@ const FeedPage = () => {
       
       
     </Container>
+    <div>
+      <form>
+        <input/>
+        <button>Postar</button>
+      </form>
+
+      <Helmet>
+        <title>Feed</title>
+      </Helmet>
+      {posts.map((post) => (
+        <PostCard
+          key={post.id}
+          postId={post.id}
+          userName={post.username}
+          title={post.title}
+          text={post.text}
+          commentsCount={post.commentsCount}
+          votesCount={post.votesCount}
+          userVoteDirection={post.userVoteDirection}
+          feedpage
+        />
+      ))}
+    </div>
   );
 };
 
