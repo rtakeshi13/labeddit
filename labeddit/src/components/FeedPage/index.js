@@ -2,19 +2,31 @@ import React from "react";
 import usePosts from "../../hooks/usePosts";
 import { Helmet } from "react-helmet-async";
 import PostCard from "../PostCard";
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+  },
+}));
 
 const FeedPage = () => {
   const [posts] = usePosts();
+  const classes = useStyles();
 
-  return (
+  return posts.length > 0 ? (
     <div>
       <form>
-        <input/>
+        <input />
         <button>Postar</button>
       </form>
 
       <Helmet>
-        <title>Feed</title>
+        <title>LabEddit</title>
       </Helmet>
       {posts.map((post) => (
         <PostCard
@@ -29,6 +41,10 @@ const FeedPage = () => {
           feedpage
         />
       ))}
+    </div>
+  ) : (
+    <div className={classes.root}>
+      <CircularProgress color="secondary" />
     </div>
   );
 };

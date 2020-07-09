@@ -2,7 +2,6 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Card from "@material-ui/core/Card";
-import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
@@ -32,16 +31,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const CommentCard = (props) => {
+  const { postId, comment } = props;
   const classes = useStyles();
   return (
     <Container component="main" maxWidth="sm">
       <Card className={classes.root} variant="outlined">
         <Wrapper>
           <KarmaCounter
-            userVoteDirection={props.userVoteDirection}
-            votesCount={props.votesCount}
-            postId={props.postId}
-            commentId={props.commentId}
+            postId={postId}
+            userVoteDirection={comment.userVoteDirection}
+            votesCount={comment.votesCount}
+            commentId={comment.commentId}
           />
           <CardContent>
             <Typography
@@ -49,9 +49,9 @@ const CommentCard = (props) => {
               color="textSecondary"
               gutterBottom
             >
-              {props.userName}
+              {comment.username}
             </Typography>
-            <Typography className={classes.text}>{props.text}</Typography>
+            <Typography className={classes.text}>{comment.text}</Typography>
           </CardContent>
         </Wrapper>
       </Card>

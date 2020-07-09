@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
-import styled from 'styled-components'
+import styled from "styled-components";
 
 import usePostDetail from "../../hooks/usePostDetail";
 import PostCard from "../PostCard";
@@ -12,8 +12,8 @@ import CircularProgress from "@material-ui/core/CircularProgress";
 import { Helmet } from "react-helmet-async";
 
 const Container = styled.div`
-    margin-bottom: 16px;
-`
+  margin-bottom: 16px;
+`;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -45,19 +45,9 @@ const PostPage = () => {
         votesCount={post.votesCount}
         userVoteDirection={post.userVoteDirection}
       />
-      {post.comments.map((comment) => {
-        return (
-          <CommentCard
-            key={comment.id}
-            userName={comment.username}
-            text={comment.text}
-            votesCount={comment.votesCount}
-            postId={post.id}
-            commentId={comment.id}
-            userVoteDirection={comment.userVoteDirection}
-          />
-        );
-      })}
+      {post.comments.map((comment) => (
+        <CommentCard key={comment.id} postId={post.id} comment={comment} />
+      ))}
     </Container>
   ) : (
     <div className={classes.root}>
