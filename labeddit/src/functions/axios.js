@@ -31,6 +31,7 @@ export const createPost = async (body) => {
     return response.data.success;
   } catch (error) {
     console.log(error);
+    return false;
   }
 };
 
@@ -49,6 +50,7 @@ export const createComment = async (postId, body) => {
     return response.data.success;
   } catch (error) {
     console.log(error);
+    return false;
   }
 };
 
@@ -66,7 +68,8 @@ export const votePost = async (postId, direction) => {
     );
     return response.data.success;
   } catch (error) {
-    console.log(error);
+    console.log(error.response);
+    return false;
   }
 };
 
@@ -84,7 +87,8 @@ export const voteComment = async (postId, commentId, direction) => {
     );
     return response.data.success;
   } catch (error) {
-    console.log(error);
+    console.log(error.response);
+    return false;
   }
 };
 
@@ -98,7 +102,7 @@ export const getPosts = async () => {
     const response = await axios.get(`${baseUrl}/posts`, axiosConfig);
     return response.data.posts;
   } catch (error) {
-    console.log(error);
+    console.log(error.response);
   }
 };
 
@@ -112,6 +116,6 @@ export const getPostDetail = async (postId) => {
     const response = await axios.get(`${baseUrl}/posts/${postId}`, axiosConfig);
     return response.data.post;
   } catch (error) {
-    console.log(error);
+    console.log(error.response);
   }
 };
