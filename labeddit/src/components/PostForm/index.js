@@ -8,7 +8,8 @@ import styled from "styled-components";
 const FormContainer = styled.form`
   display: grid;
   justify-items: center;
-  margin-top: 20px;
+  width: 50%;
+  margin: 20px auto 20px auto;
 `;
 
 const PostForm = (props) => {
@@ -32,12 +33,14 @@ const PostForm = (props) => {
       <FormContainer onSubmit={handleFormSubmit}>
         <TextField
           required
+          autoFocus
           value={form.title}
           variant="outlined"
           label="Título"
           type="text"
           name="title"
           onChange={handleFormChange}
+          fullWidth
         />
         <TextField
           required
@@ -47,6 +50,9 @@ const PostForm = (props) => {
           type="text"
           name="text"
           onChange={handleFormChange}
+          multiline
+          rows={5}
+          fullWidth
         />
         <Button type="submit" variant="contained">
           Postar
