@@ -18,7 +18,9 @@ const Wrapper = styled.div`
   display: flex;
 `;
 
-const Comments = styled(Typography)`
+const Comments = styled(Typography)``;
+
+const Content = styled(CardContent)`
   cursor: ${({ feedpage }) => feedpage && "pointer"};
 `;
 
@@ -56,7 +58,13 @@ const PostCard = (props) => {
             votesCount={props.votesCount}
             postId={props.postId}
           />
-          <CardContent className={classes.content}>
+          <Content
+            feedpage={props.feedpage ? 1 : 0}
+            className={classes.content}
+            onClick={
+              props.feedpage ? () => handleCommentClick(props.postId) : null
+            }
+          >
             <Typography
               className={classes.title}
               color="textSecondary"
@@ -68,17 +76,11 @@ const PostCard = (props) => {
               {props.title}
             </Typography>
             <Typography className={classes.text}>{props.text}</Typography>
-            <Comments
-              variant="subtitle2"
-              feedpage={props.feedpage ? 1 : 0}
-              onClick={
-                props.feedpage ? () => handleCommentClick(props.postId) : null
-              }
-            >
+            <Comments variant="subtitle2">
               {props.commentsCount}{" "}
               {languages[selectedLanguage].commentCounterText}
             </Comments>
-          </CardContent>
+          </Content>
         </Wrapper>
       </Card>
     </Container>
