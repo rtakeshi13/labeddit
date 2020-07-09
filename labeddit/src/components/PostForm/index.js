@@ -31,23 +31,23 @@ const PostForm = (props) => {
     <div>
       <FormContainer onSubmit={handleFormSubmit}>
         <TextField
-          value={form.text}
-          variant="outlined"
-          placeholder="Escrever post"
-          type="text"
-          name="text"
-          onChange={handleFormChange}
-        />
-
-        <TextField
+          required
           value={form.title}
           variant="outlined"
-          placeholder="Título"
+          label="Título"
           type="text"
           name="title"
           onChange={handleFormChange}
         />
-
+        <TextField
+          required
+          value={form.text}
+          variant="outlined"
+          label="Escrever post"
+          type="text"
+          name="text"
+          onChange={handleFormChange}
+        />
         <Button type="submit" variant="contained">
           Postar
         </Button>

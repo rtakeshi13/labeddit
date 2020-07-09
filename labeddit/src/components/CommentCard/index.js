@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Card from "@material-ui/core/Card";
@@ -8,6 +8,9 @@ import Typography from "@material-ui/core/Typography";
 
 import KarmaCounter from "../KarmaCounter";
 import styled from "styled-components";
+
+import { languages } from "../../languages";
+import LanguageContext from "../../contexts/LanguageContext";
 
 const Wrapper = styled.div`
   display: flex;
@@ -33,6 +36,40 @@ const useStyles = makeStyles((theme) => ({
 const CommentCard = (props) => {
   const { postId, comment } = props;
   const classes = useStyles();
+  const [selectedLanguage] = useContext(LanguageContext);
+
+  const formatCommentAge = (created) => {
+    const ageInMinutes = ((Date.now() - created) / 60000).toFixed(0);
+    if (ageInMinutes < 1) {
+      // menos de 1 minuto
+      return languages[selectedLanguage].now;
+    } else if (ageInMinutes < 59) {
+      // menos de 1 hora
+      return `${ageInMinutes} ${languages[selectedLanguage].minutes}`;
+    } else if (ageInMinutes < 119) {
+      // menos de 2 horas
+      return `1 ${languages[selectedLanguage].hour}`;
+    } else if (ageInMinutes < 1439) {
+      // menos de 1 dia
+      const ageInHours = (ageInMinutes / 60).toFixed(0);
+      return `${ageInHours} ${languages[selectedLanguage].hours}`;
+    } else if (ageInMinutes < 10079) {
+      // menos de 1 semana
+      const ageInDays = (ageInMinutes / 1440).toFixed(0);
+      return `${ageInDays} ${languages[selectedLanguage].days}`;
+    } else if (ageInMinutes < 43199) {
+      // menos de 1 mes
+      const ageInWeeks = (ageInMinutes / 10080).toFixed(0);
+      return `${ageInWeeks} ${languages[selectedLanguage].weeks}`;
+    } else if (ageInMinutes < 86400) {
+      return `1 ${languages[selectedLanguage].month}`;
+    } else {
+      // mais de 2 meses
+      const ageInMonths = (ageInMinutes / 43200).toFixed(0);
+      return `${ageInMonths} ${languages[selectedLanguage].months}`;
+    }
+  };
+
   return (
     <Container component="main" maxWidth="sm">
       <Card className={classes.root} variant="outlined">
@@ -49,7 +86,9 @@ const CommentCard = (props) => {
               color="textSecondary"
               gutterBottom
             >
-              {comment.username}
+              {`${languages[selectedLanguage].commentedBy} ${
+                comment.username
+              } ${formatCommentAge(comment.createdAt)}`}
             </Typography>
             <Typography className={classes.text}>{comment.text}</Typography>
           </CardContent>
