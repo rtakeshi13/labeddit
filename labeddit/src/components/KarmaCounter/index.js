@@ -25,7 +25,7 @@ const DownvoteButton = styled.span`
 `;
 
 const VotesCount = styled.span`
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin-left: 2px;
 `;
 

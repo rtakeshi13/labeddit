@@ -21,10 +21,13 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 16,
-    border: "1px solid black",
   },
   pos: {
     marginBottom: 12,
+    fontSize: 14,
+  },
+  text: {
+    fontSize: 16,
   },
 }));
 
@@ -41,8 +44,14 @@ const CommentCard = (props) => {
             commentId={props.commentId}
           />
           <CardContent>
-            <Typography>{props.userName}</Typography>
-            <p>{props.text}</p>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              {props.userName}
+            </Typography>
+            <Typography className={classes.text}>{props.text}</Typography>
           </CardContent>
         </Wrapper>
       </Card>

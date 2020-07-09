@@ -32,6 +32,10 @@ const useStyles = makeStyles((theme) => ({
     fontSize: 16,
   },
   pos: {
+    marginBottom: 5,
+  },
+  text: {
+    fontSize: 16,
     marginBottom: 12,
   },
 }));
@@ -63,20 +67,17 @@ const PostCard = (props) => {
             <Typography className={classes.pos} variant="h5" component="h2">
               {props.title}
             </Typography>
-            <Typography className={classes.pos} variant="body2" component="p">
-              {props.text}
-            </Typography>
-            <CardActions>
-              <Comments
-                feedpage={props.feedpage ? 1 : 0}
-                onClick={
-                  props.feedpage ? () => handleCommentClick(props.postId) : null
-                }
-              >
-                {props.commentsCount}{" "}
-                {languages[selectedLanguage].commentCounterText}
-              </Comments>
-            </CardActions>
+            <Typography className={classes.text}>{props.text}</Typography>
+            <Comments
+              variant="subtitle2"
+              feedpage={props.feedpage ? 1 : 0}
+              onClick={
+                props.feedpage ? () => handleCommentClick(props.postId) : null
+              }
+            >
+              {props.commentsCount}{" "}
+              {languages[selectedLanguage].commentCounterText}
+            </Comments>
           </CardContent>
         </Wrapper>
       </Card>
