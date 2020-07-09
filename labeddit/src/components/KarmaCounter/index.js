@@ -22,15 +22,13 @@ const DownvoteButton = styled.span`
   color: ${({ voted }) => (voted ? "#9494ff" : "black")};
   font-size: 2em;
   cursor: pointer;
-  margin-top: -10px;
-  margin-left: 0px;
+  margin-top: -5px;
 `;
 
 const VotesCount = styled.span`
   color: ${({ direction }) =>
     !direction ? "black" : direction === 1 ? "#ff8b60" : "#9494ff"};
   font-size: 1.4em;
-  margin-left: 2px;
 `;
 
 const KarmaCounter = (props) => {
