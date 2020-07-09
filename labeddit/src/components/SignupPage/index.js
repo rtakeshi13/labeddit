@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import useForm from "../../hooks/useForm";
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 import { signup } from "../../functions/axios";
 import { useHistory } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
+import TextField from "@material-ui/core/TextField";
 
 const SignupPage = () => {
   const history = useHistory();
@@ -28,32 +31,32 @@ const SignupPage = () => {
   };
 
   return (
-    <div>
+    <Container component="main" maxWidth="xs">
       <Helmet>
         <title>{languages[selectedLanguage].signupLabel}</title>
       </Helmet>
       <form onSubmit={handleFormSubmit}>
-        <input
+        <TextField id="outlined-basic" variant="outlined" 
           type="text"
           name="username"
           placeholder="Nome de usuário"
           onChange={handleFormChange}
         />
-        <input
+        <TextField id="outlined-basic" variant="outlined"
           type="email"
           name="email"
           placeholder="E-mail"
           onChange={handleFormChange}
         />
-        <input
+        <TextField id="outlined-basic" variant="outlined"
           type="password"
           name="password"
           placeholder="Senha"
           onChange={handleFormChange}
         />
-        <button>{languages[selectedLanguage].signupLabel}</button>
+        <Button variant="contained" >{languages[selectedLanguage].signupLabel}</Button>
       </form>
-    </div>
+    </Container>
   );
 };
 
