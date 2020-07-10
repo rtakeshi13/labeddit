@@ -81,6 +81,7 @@ const LoginPage = () => {
             label={languages[selectedLanguage].emailLabel}
             name="email"
             autoFocus
+            type="email"
           />
           <TextField
             onChange={handleFormChange}

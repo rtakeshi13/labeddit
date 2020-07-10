@@ -2,10 +2,11 @@ export const languages = {
   en: {
     loginLabel: "Login",
     logoutLabel: "Logout",
+    loginLinkText: "Already have an account? Sign in!",
     emailLabel: "Email Address",
     passwordLabel: "Password",
     usernameLabel: "Username",
-    signupText: "Don't have an account? Sign Up!",
+    signupText: "Don't have an account? Sign up!",
     signupLabel: "Sign Up",
     commentCounterText: "comments",
     sendComment: "Send comment",
@@ -34,6 +35,7 @@ export const languages = {
   pt: {
     loginLabel: "Entrar",
     logoutLabel: "Sair",
+    loginLinkText: "Já possui uma conta ? Faça login!",
     emailLabel: "Endereço de Email",
     passwordLabel: "Palavra-chave",
     usernameLabel: "Nome de usuário",
