@@ -76,7 +76,7 @@ const SignupPage = () => {
         <Typography component="h1" variant="h5">
           {languages[selectedLanguage].signupLabel}
         </Typography>
-        <form onSubmit={handleFormSubmit} className={classes.form} noValidate>
+        <form onSubmit={handleFormSubmit} className={classes.form}>
           <TextField
             onChange={handleFormChange}
             value={form.username}
