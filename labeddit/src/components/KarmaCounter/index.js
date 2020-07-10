@@ -39,18 +39,14 @@ const KarmaCounter = (props) => {
       <UpvoteButton
         voted={state.userVoteDirection === 1 ? true : false}
         onClick={upvote}
-      >
-        +
-      </UpvoteButton>
+      />
       <VotesCount direction={state.userVoteDirection}>
         {state.votesCount}
       </VotesCount>
       <DownvoteButton
         voted={state.userVoteDirection === -1 ? true : false}
         onClick={downvote}
-      >
-        -
-      </DownvoteButton>
+      />
     </CounterWrapper>
   );
 };
