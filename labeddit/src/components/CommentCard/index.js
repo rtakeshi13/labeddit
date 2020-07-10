@@ -89,7 +89,10 @@ const CommentCard = (props) => {
             </Typography>
             <Typography
               className={classes.text}
-              style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}
+              style={{
+                whiteSpace: "pre-wrap",
+                wordBreak: "break-all",
+              }}
             >
               {comment.text}
             </Typography>
