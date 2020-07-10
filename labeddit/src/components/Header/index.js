@@ -42,9 +42,15 @@ const Header = (props) => {
   const [selectedLanguage, setLanguage] = useContext(LanguageContext);
   const classes = useStyles();
   const history = useHistory();
+
   const handleLanguageSelect = (event) => {
     localStorage.setItem("language", event.target.value);
     setLanguage(event.target.value);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("labeddit");
+    history.push("/login");
   };
 
   return (
@@ -59,12 +65,7 @@ const Header = (props) => {
             >
               LOGO
             </Typography>
-            <Button
-              onClick={() => {
-                localStorage.removeItem("labeddit");
-                history.push("/login");
-              }}
-            >
+            <Button onClick={handleLogout}>
               {languages[selectedLanguage].logoutLabel}
             </Button>
             <select value={selectedLanguage} onChange={handleLanguageSelect}>
