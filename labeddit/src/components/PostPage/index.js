@@ -34,20 +34,8 @@ const PostPage = () => {
   const classes = useStyles();
   const { postId } = useParams();
   const [post, getPostDetails] = usePostDetail(postId);
-  const [form, handleInputChange, resetForm] = useForm({ text: "" });
   const history = useHistory();
   const [order, setOrder] = useState("created_new");
-
-  const handleFormSubmit = async (event) => {
-    event.preventDefault();
-    const success = await createComment(post.id, form);
-    if (success) {
-      resetForm();
-      getPostDetails(postId);
-    } else {
-      alert(languages[selectedLanguage].postErrorAlert);
-    }
-  };
 
   const handleOrderChange = (event) => {
     setOrder(event.target.value);
