@@ -63,7 +63,7 @@ const Header = (props) => {
               variant="h6"
               className={classes.title}
             >
-              LOGO
+              LabEddit
             </Typography>
             <Button onClick={handleLogout}>
               {languages[selectedLanguage].logoutLabel}
