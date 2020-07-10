@@ -8,6 +8,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import HomePage from "./components/HomePage";
 import ProtectedRoute from "./components/ProtectedRoute";
+import FourOFour from "./components/FourOFour";
 
 const Router = () => {
   return (
@@ -19,6 +20,9 @@ const Router = () => {
         <Route exact path="/signup" component={SignupPage} />
         <ProtectedRoute exact path="/posts" component={FeedPage} />
         <ProtectedRoute exact path="/posts/:postId" component={PostPage} />
+        <Route path="/">
+          <FourOFour />
+        </Route>
       </Switch>
       <Footer />
     </BrowserRouter>

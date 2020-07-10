@@ -47,23 +47,34 @@ const PostPage = () => {
     setOrder(event.target.value);
   };
 
-  const orderedComments = post.comments;
-  switch (order) {
-    case "created_new":
-      orderedComments.sort((a, b) => b.createdAt - a.createdAt);
-      break;
-    case "created_old":
-      orderedComments.sort((a, b) => a.createdAt - b.createdAt);
-      break;
-    case "votes_more":
-      orderedComments.sort((a, b) => b.votesCount - a.votesCount);
-      break;
-    case "votes_less":
-      orderedComments.sort((a, b) => a.votesCount - b.votesCount);
-      break;
-    default:
-      break;
+  let orderedComments;
+  if (post) {
+    switch (order) {
+      case "created_new":
+        orderedComments = post.comments.sort(
+          (a, b) => b.createdAt - a.createdAt
+        );
+        break;
+      case "created_old":
+        orderedComments = post.comments.sort(
+          (a, b) => a.createdAt - b.createdAt
+        );
+        break;
+      case "votes_more":
+        orderedComments = post.comments.sort(
+          (a, b) => b.votesCount - a.votesCount
+        );
+        break;
+      case "votes_less":
+        orderedComments = post.comments.sort(
+          (a, b) => a.votesCount - b.votesCount
+        );
+        break;
+      default:
+        break;
+    }
   }
+
   return post ? (
     <Container>
       <Helmet>

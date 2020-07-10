@@ -1,12 +1,19 @@
 import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { getPostDetail } from "../functions/axios";
 
 const usePostDetail = (postId) => {
-  const [postDetail, setPostDetail] = useState({ comments: [] });
+  const [postDetail, setPostDetail] = useState();
+
+  const history = useHistory();
 
   const requestPostDetail = async (id) => {
     const response = await getPostDetail(id);
-    setPostDetail(response);
+    if (response.username) {
+      setPostDetail(response);
+    } else {
+      history.replace("/404");
+    }
   };
 
   useEffect(() => {
