@@ -65,26 +65,66 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const PostCard = (props) => {
-  const selectedLanguage = useContext(LanguageContext);
+  const {
+    postId,
+    userName,
+    title,
+    text,
+    commentsCount,
+    votesCount,
+    userVoteDirection,
+    createdAt,
+    feedpage,
+  } = props;
+  const [selectedLanguage] = useContext(LanguageContext);
   const classes = useStyles();
   const history = useHistory();
 
-  const shareUrl = `${window.location.href}${
-    props.feedpage ? `/${props.postId}` : ""
-  }`;
-  const title = props.title;
+  const shareUrl = `${window.location.href}${feedpage ? `/${postId}` : ""}`;
 
   const handleCommentClick = (postId) =>
-    props.feedpage && history.push(`posts/${postId}`);
+    feedpage && history.push(`posts/${postId}`);
+
+  const formatPostAge = (created) => {
+    const ageInMinutes = ((Date.now() - created) / 60000).toFixed(0);
+    if (ageInMinutes < 1) {
+      // menos de 1 minuto
+      return languages[selectedLanguage].now;
+    } else if (ageInMinutes < 59) {
+      // menos de 1 hora
+      return `${ageInMinutes} ${languages[selectedLanguage].minutes}`;
+    } else if (ageInMinutes < 119) {
+      // menos de 2 horas
+      return `1 ${languages[selectedLanguage].hour}`;
+    } else if (ageInMinutes < 1439) {
+      // menos de 1 dia
+      const ageInHours = (ageInMinutes / 60).toFixed(0);
+      return `${ageInHours} ${languages[selectedLanguage].hours}`;
+    } else if (ageInMinutes < 10079) {
+      // menos de 1 semana
+      const ageInDays = (ageInMinutes / 1440).toFixed(0);
+      return `${ageInDays} ${languages[selectedLanguage].days}`;
+    } else if (ageInMinutes < 43199) {
+      // menos de 1 mes
+      const ageInWeeks = (ageInMinutes / 10080).toFixed(0);
+      return `${ageInWeeks} ${languages[selectedLanguage].weeks}`;
+    } else if (ageInMinutes < 86400) {
+      return `1 ${languages[selectedLanguage].month}`;
+    } else {
+      // mais de 2 meses
+      const ageInMonths = (ageInMinutes / 43200).toFixed(0);
+      return `${ageInMonths} ${languages[selectedLanguage].months}`;
+    }
+  };
 
   return (
     <Container component="main" maxWidth="sm">
       <Card className={classes.root} variant="outlined">
         <Wrapper>
           <KarmaCounter
-            userVoteDirection={props.userVoteDirection}
-            votesCount={props.votesCount}
-            postId={props.postId}
+            userVoteDirection={userVoteDirection}
+            votesCount={votesCount}
+            postId={postId}
           />
           <Content>
             <Typography
@@ -92,21 +132,22 @@ const PostCard = (props) => {
               color="textSecondary"
               gutterBottom
             >
-              {props.userName}
+              {`${
+                languages[selectedLanguage].postedBy
+              } ${userName} ${formatPostAge(createdAt)}`}
             </Typography>
             <Typography className={classes.pos} variant="h5" component="h2">
-              {props.title}
+              {title}
             </Typography>
-            <Typography className={classes.text}>{props.text}</Typography>
+            <Typography className={classes.text}>{text}</Typography>
             <CardFooter
               style={{ display: "flex", justifyContent: "space-between" }}
             >
               <Comments
                 variant="subtitle2"
-                onClick={() => handleCommentClick(props.postId)}
+                onClick={() => handleCommentClick(postId)}
               >
-                {props.commentsCount}{" "}
-                {languages[selectedLanguage].commentCounterText}
+                {commentsCount} {languages[selectedLanguage].commentCounterText}
               </Comments>
 
               <div>

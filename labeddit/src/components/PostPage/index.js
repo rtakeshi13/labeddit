@@ -78,6 +78,7 @@ const PostPage = () => {
         commentsCount={post.commentsCount}
         votesCount={post.votesCount}
         userVoteDirection={post.userVoteDirection}
+        createdAt={post.createdAt}
       />
       <NewComment>
           <Form onSubmit={handleFormSubmit} >

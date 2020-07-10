@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -6,6 +6,8 @@ import Button from "@material-ui/core/Button";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Typography from "@material-ui/core/Typography";
 import { useHistory } from "react-router-dom";
+import LanguageContext from "../../contexts/LanguageContext";
+import { languages } from "../../languages";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,8 +36,13 @@ function ElevationScroll(props) {
 }
 
 const Header = (props) => {
+  const [selectedLanguage, setLanguage] = useContext(LanguageContext);
   const classes = useStyles();
   const history = useHistory();
+  const handleLanguageSelect = (event) => {
+    localStorage.setItem("language", event.target.value);
+    setLanguage(event.target.value);
+  };
 
   return (
     <React.Fragment>
@@ -55,8 +62,12 @@ const Header = (props) => {
                 history.push("/login");
               }}
             >
-              Logout
+              {languages[selectedLanguage].logoutLabel}
             </Button>
+            <select value={selectedLanguage} onChange={handleLanguageSelect}>
+              <option value={"pt"}>PT</option>
+              <option value={"en"}>EN</option>
+            </select>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
