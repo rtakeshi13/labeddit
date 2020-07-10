@@ -85,7 +85,7 @@ const PostPage = () => {
                 name="text"
                 value={form.text}
                 onChange={handleInputChange}
-                placeholder="seu comentário"
+                placeholder={languages[selectedLanguage].commentPlaceholder}
               />
               <button type="submit">{languages[selectedLanguage].sendComment}</button>
           </Form>

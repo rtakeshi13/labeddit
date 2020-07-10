@@ -6,7 +6,8 @@ export const languages = {
     signupText: "Don't have an account? Sign Up!",
     signupLabel: "Sign Up",
     commentCounterText: "comments",
-    sendComment: "send comment"
+    sendComment: "send comment",
+    commentPlaceholder: "comment here"
   },
   pt: {
     loginLabel: "Entrar",
@@ -15,6 +16,7 @@ export const languages = {
     signupText: "Não tem uma conta? Cadastre-se!",
     signupLabel: "Cadastre-se",
     commentCounterText: "comentários",
-    sendComment: "enviar comentário"
+    sendComment: "enviar comentário",
+    commentPlaceholder: "comente aqui"
   },
 };

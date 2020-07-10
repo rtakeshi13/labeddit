@@ -5,7 +5,7 @@ import LanguageContext from "./contexts/LanguageContext";
 const App = () => {
   const language = localStorage.getItem("language");
   return (
-    <LanguageContext.Provider value={language || "pt"}>
+    <LanguageContext.Provider value={language || "en"}>
       <Router />
     </LanguageContext.Provider>
   );
