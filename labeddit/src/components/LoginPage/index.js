@@ -103,14 +103,14 @@ const LoginPage = () => {
           >
             {languages[selectedLanguage].loginLabel}
           </Button>
-          <Link
-            onClick={() => history.push("/signup")}
-            variant="body2"
-            style={{ cursor: "pointer" }}
-          >
-            {languages[selectedLanguage].signupText}
-          </Link>
         </form>
+        <Link
+          onClick={() => history.push("/signup")}
+          variant="body2"
+          style={{ cursor: "pointer" }}
+        >
+          {languages[selectedLanguage].signupText}
+        </Link>
       </div>
       <Box mt={8}>
         <Typography variant="body2" color="textSecondary" align="center">
