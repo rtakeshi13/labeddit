@@ -87,7 +87,12 @@ const CommentCard = (props) => {
                 comment.username
               } ${formatCommentAge(comment.createdAt)}`}
             </Typography>
-            <Typography className={classes.text}>{comment.text}</Typography>
+            <Typography
+              className={classes.text}
+              style={{ whiteSpace: "pre-wrap", wordBreak: "break-word" }}
+            >
+              {comment.text}
+            </Typography>
           </CardContent>
         </KarmaWrapper>
       </Card>

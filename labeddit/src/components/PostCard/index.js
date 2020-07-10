@@ -117,7 +117,9 @@ const PostCard = (props) => {
             <Typography className={classes.pos} variant="h5" component="h2">
               {title}
             </Typography>
-            <Typography className={classes.text}>{text}</Typography>
+            <Typography className={classes.text} style={{ whiteSpace: "pre" }}>
+              {text}
+            </Typography>
             <CardFooter
               style={{ display: "flex", justifyContent: "space-between" }}
             >

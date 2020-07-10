@@ -5,6 +5,7 @@ const usePosts = () => {
   const [posts, setPosts] = useState([]);
 
   const requestPosts = async () => {
+    setPosts([]);
     const response = await getPosts();
     setPosts(response);
   };

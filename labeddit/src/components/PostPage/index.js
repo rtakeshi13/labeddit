@@ -40,7 +40,7 @@ const PostPage = () => {
     event.preventDefault();
     await createComment(post.id, form);
     resetForm();
-    getPostDetails(post.id);
+    getPostDetails(postId);
   };
 
   const handleOrderChange = (event) => {
@@ -86,7 +86,7 @@ const PostPage = () => {
       />
       <NewComment>
         <Form onSubmit={handleFormSubmit}>
-          <input
+          <textarea
             name="text"
             value={form.text}
             onChange={handleInputChange}

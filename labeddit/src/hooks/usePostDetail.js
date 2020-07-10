@@ -8,6 +8,7 @@ const usePostDetail = (postId) => {
   const history = useHistory();
 
   const requestPostDetail = async (id) => {
+    setPostDetail();
     const response = await getPostDetail(id);
     if (response.username) {
       setPostDetail(response);
