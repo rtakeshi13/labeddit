@@ -8,6 +8,8 @@ export const languages = {
     signupText: "Don't have an account? Sign Up!",
     signupLabel: "Sign Up",
     commentCounterText: "comments",
+    sendComment: "send comment",
+    commentPlaceholder: "comment here"
     sortLabel: "Sort by",
     newest: "Newest",
     oldest: "Oldest",
@@ -33,6 +35,8 @@ export const languages = {
     signupText: "Não tem uma conta? Cadastre-se!",
     signupLabel: "Cadastre-se",
     commentCounterText: "comentários",
+    sendComment: "enviar comentário",
+    commentPlaceholder: "comente aqui"
     sortLabel: "Ordenar por",
     newest: "Mais novos",
     oldest: "Mais antigos",
