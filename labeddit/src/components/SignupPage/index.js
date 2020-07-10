@@ -85,6 +85,7 @@ const SignupPage = () => {
       <Helmet>
         <title>{languages[selectedLanguage].signupLabel}</title>
       </Helmet>
+
       <CssBaseline />
       <div className={classes.paper}>
         <Avatar className={classes.avatar}>

@@ -4,23 +4,23 @@ import useForm from "../../hooks/useForm";
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
 
-import { createPost } from "../../functions/axios";
+import { createComment } from "../../functions/axios";
 
 import Container from "@material-ui/core/Container";
 
 import { FormContainer, Submit, TextInput } from "./styles";
 
-const PostForm = (props) => {
-  const { getPosts } = props;
-  const [form, handleFormChange, resetForm] = useForm({ text: "", title: "" });
+const CommentForm = (props) => {
+  const { postId, getPostDetails } = props;
+  const [form, handleFormChange, resetForm] = useForm({ text: "" });
   const [selectedLanguage] = useContext(LanguageContext);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    const success = await createPost(form);
+    const success = await createComment(postId, form);
     if (success) {
       resetForm();
-      getPosts();
+      getPostDetails(postId);
     } else {
       alert(languages[selectedLanguage].postErrorAlert);
     }
@@ -31,19 +31,9 @@ const PostForm = (props) => {
       <FormContainer onSubmit={handleFormSubmit}>
         <TextInput
           required
-          value={form.title}
-          variant="outlined"
-          label={languages[selectedLanguage].postTitlePlaceholder}
-          type="text"
-          name="title"
-          onChange={handleFormChange}
-          fullWidth
-        />
-        <TextInput
-          required
           value={form.text}
           variant="outlined"
-          label={languages[selectedLanguage].postTextPlaceholder}
+          label={languages[selectedLanguage].commentTextPlaceholder}
           type="text"
           name="text"
           onChange={handleFormChange}
@@ -59,4 +49,4 @@ const PostForm = (props) => {
   );
 };
 
-export default PostForm;
+export default CommentForm;

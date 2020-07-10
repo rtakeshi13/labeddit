@@ -28,6 +28,8 @@ export const languages = {
     postTitlePlaceholder: "Your post title",
     postTextPlaceholder: "Write your post here...",
     postButton: "Submit",
+    postErrorAlert: "Something went wrong, please try again later",
+    commentTextPlaceholder: "Write your comment here...",
   },
   pt: {
     loginLabel: "Entrar",
@@ -58,5 +60,7 @@ export const languages = {
     postTitlePlaceholder: "Título da sua postagem",
     postTextPlaceholder: "Escreva sua postagem aqui...",
     postButton: "Enviar",
+    postErrorAlert: "Algo deu errado, por favor tente novamente mais tarde",
+    commentTextPlaceholder: "Escreva seu comentário aqui...",
   },
 };
