@@ -1,20 +1,17 @@
-import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
+import React, { useContext } from "react";
 import useForm from "../../hooks/useForm";
-import { createPost } from "../../functions/axios";
-import styled from "styled-components";
 
-const FormContainer = styled.form`
-  display: grid;
-  justify-items: center;
-  width: 50%;
-  margin: 20px auto 20px auto;
-`;
+import { languages } from "../../languages";
+import LanguageContext from "../../contexts/LanguageContext";
+
+import { createPost } from "../../functions/axios";
+
+import { FormContainer, Submit, TextInput } from "./styles";
 
 const PostForm = (props) => {
   const { getPosts } = props;
   const [form, handleFormChange, resetForm] = useForm({ text: "", title: "" });
+  const [selectedLanguage] = useContext(LanguageContext);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -31,22 +28,21 @@ const PostForm = (props) => {
   return (
     <div>
       <FormContainer onSubmit={handleFormSubmit}>
-        <TextField
+        <TextInput
           required
-          autoFocus
           value={form.title}
           variant="outlined"
-          label="Título"
+          label={languages[selectedLanguage].postTitlePlaceholder}
           type="text"
           name="title"
           onChange={handleFormChange}
           fullWidth
         />
-        <TextField
+        <TextInput
           required
           value={form.text}
           variant="outlined"
-          label="Escrever post"
+          label={languages[selectedLanguage].postTextPlaceholder}
           type="text"
           name="text"
           onChange={handleFormChange}
@@ -54,9 +50,9 @@ const PostForm = (props) => {
           rows={5}
           fullWidth
         />
-        <Button type="submit" variant="contained">
-          Postar
-        </Button>
+        <Submit type="submit" variant="contained">
+          {languages[selectedLanguage].postButton}
+        </Submit>
       </FormContainer>
     </div>
   );

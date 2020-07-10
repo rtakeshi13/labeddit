@@ -1,20 +1,17 @@
 import React, { useContext } from "react";
-import { makeStyles } from "@material-ui/core/styles";
 
+import { languages } from "../../languages";
+import LanguageContext from "../../contexts/LanguageContext";
+
+import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 
 import KarmaCounter from "../KarmaCounter";
-import styled from "styled-components";
+import { KarmaWrapper } from "./styles";
 
-import { languages } from "../../languages";
-import LanguageContext from "../../contexts/LanguageContext";
-
-const Wrapper = styled.div`
-  display: flex;
-`;
 const useStyles = makeStyles((theme) => ({
   root: {
     marginTop: theme.spacing(1),
@@ -73,7 +70,7 @@ const CommentCard = (props) => {
   return (
     <Container component="main" maxWidth="sm">
       <Card className={classes.root} variant="outlined">
-        <Wrapper>
+        <KarmaWrapper>
           <KarmaCounter
             postId={postId}
             userVoteDirection={comment.userVoteDirection}
@@ -92,7 +89,7 @@ const CommentCard = (props) => {
             </Typography>
             <Typography className={classes.text}>{comment.text}</Typography>
           </CardContent>
-        </Wrapper>
+        </KarmaWrapper>
       </Card>
     </Container>
   );

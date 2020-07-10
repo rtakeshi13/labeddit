@@ -1,6 +1,9 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 
+import { languages } from "../../languages";
+import LanguageContext from "../../contexts/LanguageContext";
+
 import {
   WhatsappShareButton,
   WhatsappIcon,
@@ -14,37 +17,12 @@ import {
 
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
-import CardContent from "@material-ui/core/CardContent";
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
-import Link from "@material-ui/core/Link";
 
-import { languages } from "../../languages";
-import LanguageContext from "../../contexts/LanguageContext";
+import { KarmaWrapper, CardFooter, Comments, Content } from "./styles";
+
 import KarmaCounter from "../KarmaCounter";
-import styled from "styled-components";
-
-const Wrapper = styled.div`
-  display: flex;
-`;
-
-const CardFooter = styled.div`
-  display: flex;
-  justify-content: space-around;
-
-  div > * {
-    margin: 4px;
-  }
-`;
-
-const Comments = styled(Link)`
-  margin-top: 10px;
-  cursor: pointer;
-`;
-
-const Content = styled(CardContent)`
-  width: 100%;
-`;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -120,7 +98,7 @@ const PostCard = (props) => {
   return (
     <Container component="main" maxWidth="sm">
       <Card className={classes.root} variant="outlined">
-        <Wrapper>
+        <KarmaWrapper>
           <KarmaCounter
             userVoteDirection={userVoteDirection}
             votesCount={votesCount}
@@ -182,7 +160,7 @@ const PostCard = (props) => {
               </div>
             </CardFooter>
           </Content>
-        </Wrapper>
+        </KarmaWrapper>
       </Card>
     </Container>
   );

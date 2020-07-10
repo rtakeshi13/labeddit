@@ -1,8 +1,15 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
 import useForm from "../../hooks/useForm";
-import { login } from "../../functions/axios";
+
 import { Helmet } from "react-helmet-async";
+
+import { languages } from "../../languages";
+import LanguageContext from "../../contexts/LanguageContext";
+
+import { login } from "../../functions/axios";
+
+import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -11,10 +18,7 @@ import Link from "@material-ui/core/Link";
 import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
-import { languages } from "../../languages";
-import LanguageContext from "../../contexts/LanguageContext";
 
 const useStyles = makeStyles((theme) => ({
   paper: {

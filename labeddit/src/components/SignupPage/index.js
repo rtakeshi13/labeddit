@@ -1,12 +1,16 @@
 import React, { useContext } from "react";
-import useForm from "../../hooks/useForm";
-import Button from "@material-ui/core/Button";
-import Container from "@material-ui/core/Container";
-import { signup } from "../../functions/axios";
 import { useHistory } from "react-router-dom";
+import useForm from "../../hooks/useForm";
+
 import { Helmet } from "react-helmet-async";
+
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
+
+import { signup } from "../../functions/axios";
+
+import Button from "@material-ui/core/Button";
+import Container from "@material-ui/core/Container";
 import TextField from "@material-ui/core/TextField";
 
 const SignupPage = () => {

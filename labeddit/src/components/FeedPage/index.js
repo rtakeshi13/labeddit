@@ -1,13 +1,17 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
 import usePosts from "../../hooks/usePosts";
+
 import { Helmet } from "react-helmet-async";
-import PostCard from "../PostCard";
-import { makeStyles } from "@material-ui/core/styles";
-import CircularProgress from "@material-ui/core/CircularProgress";
-import PostForm from "../PostForm";
+
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
+
+import PostForm from "../PostForm";
+import PostCard from "../PostCard";
+
+import { makeStyles } from "@material-ui/core/styles";
+import CircularProgress from "@material-ui/core/CircularProgress";
+
 import { SortWrapper } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,7 +25,6 @@ const useStyles = makeStyles((theme) => ({
 
 const FeedPage = () => {
   const [posts, getPosts] = usePosts();
-  const history = useHistory();
   const classes = useStyles();
   const [order, setOrder] = useState("created_new");
   const [selectedLanguage] = useContext(LanguageContext);

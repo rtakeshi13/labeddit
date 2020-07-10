@@ -1,13 +1,16 @@
 import React, { useContext } from "react";
+
+import LanguageContext from "../../contexts/LanguageContext";
+import { languages } from "../../languages";
+
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Typography from "@material-ui/core/Typography";
+
 import { useHistory } from "react-router-dom";
-import LanguageContext from "../../contexts/LanguageContext";
-import { languages } from "../../languages";
 
 const useStyles = makeStyles((theme) => ({
   root: {

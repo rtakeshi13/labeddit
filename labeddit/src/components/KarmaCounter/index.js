@@ -1,6 +1,8 @@
 import React, { useReducer } from "react";
 import { karmaReducer } from "../../functions/karmaReducer";
+
 import { votePost, voteComment } from "../../functions/axios";
+
 import {
   CounterWrapper,
   UpvoteButton,

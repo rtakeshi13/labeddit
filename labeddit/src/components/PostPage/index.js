@@ -1,41 +1,22 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import styled from "styled-components";
+import usePostDetail from "../../hooks/usePostDetail";
+import useForm from "../../hooks/useForm";
+
+import { Helmet } from "react-helmet-async";
 
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
-import usePostDetail from "../../hooks/usePostDetail";
-import useForm from "../../hooks/useForm";
+
 import { createComment } from "../../functions/axios";
+
 import PostCard from "../PostCard";
 import CommentCard from "../CommentCard";
 
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 
-import { Helmet } from "react-helmet-async";
-
-const Container = styled.div`
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const NewComment = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const Form = styled.form`
-  width: 50vw;
-  input {
-    width: 100%;
-  }
-  button {
-    display: block;
-  }
-`;
+import { SortWrapper, Container, NewComment, Form } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,6 +34,7 @@ const PostPage = () => {
   const [post, getPostDetails] = usePostDetail(postId);
   const [form, handleInputChange, resetForm] = useForm({ text: "" });
   const history = useHistory();
+  const [order, setOrder] = useState("created_new");
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -61,6 +43,27 @@ const PostPage = () => {
     getPostDetails(post.id);
   };
 
+  const handleOrderChange = (event) => {
+    setOrder(event.target.value);
+  };
+
+  const orderedComments = post.comments;
+  switch (order) {
+    case "created_new":
+      orderedComments.sort((a, b) => b.createdAt - a.createdAt);
+      break;
+    case "created_old":
+      orderedComments.sort((a, b) => a.createdAt - b.createdAt);
+      break;
+    case "votes_more":
+      orderedComments.sort((a, b) => b.votesCount - a.votesCount);
+      break;
+    case "votes_less":
+      orderedComments.sort((a, b) => a.votesCount - b.votesCount);
+      break;
+    default:
+      break;
+  }
   return post ? (
     <Container>
       <Helmet>
@@ -90,6 +93,26 @@ const PostPage = () => {
           </button>
         </Form>
       </NewComment>
+      <SortWrapper>
+        <div />
+        <label>
+          {languages[selectedLanguage].sortLabel}{" "}
+          <select onChange={handleOrderChange}>
+            <option value="created_new">
+              {languages[selectedLanguage].newest}
+            </option>
+            <option value="created_old">
+              {languages[selectedLanguage].oldest}
+            </option>
+            <option value="votes_more">
+              {languages[selectedLanguage].upvotes}
+            </option>
+            <option value="votes_less">
+              {languages[selectedLanguage].downvotes}
+            </option>
+          </select>
+        </label>
+      </SortWrapper>
       {post.comments.map((comment) => (
         <CommentCard key={comment.id} postId={post.id} comment={comment} />
       ))}
