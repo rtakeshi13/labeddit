@@ -11,6 +11,7 @@ import PostCard from "../PostCard";
 
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Container from "@material-ui/core/Container";
 
 import { SortWrapper } from "./styles";
 
@@ -58,26 +59,29 @@ const FeedPage = () => {
       </Helmet>
 
       <PostForm getPosts={getPosts} />
-      <SortWrapper>
-        <div />
-        <label>
-          {languages[selectedLanguage].sortLabel}{" "}
-          <select onChange={handleOrderChange}>
-            <option value="created_new">
-              {languages[selectedLanguage].newest}
-            </option>
-            <option value="created_old">
-              {languages[selectedLanguage].oldest}
-            </option>
-            <option value="votes_more">
-              {languages[selectedLanguage].upvotes}
-            </option>
-            <option value="votes_less">
-              {languages[selectedLanguage].downvotes}
-            </option>
-          </select>
-        </label>
-      </SortWrapper>
+
+      <Container maxWidth="md" style={{ marginTop: "20px" }}>
+        <SortWrapper>
+          <div />
+          <label>
+            {languages[selectedLanguage].sortLabel}{" "}
+            <select onChange={handleOrderChange}>
+              <option value="created_new">
+                {languages[selectedLanguage].newest}
+              </option>
+              <option value="created_old">
+                {languages[selectedLanguage].oldest}
+              </option>
+              <option value="votes_more">
+                {languages[selectedLanguage].upvotes}
+              </option>
+              <option value="votes_less">
+                {languages[selectedLanguage].downvotes}
+              </option>
+            </select>
+          </label>
+        </SortWrapper>
+      </Container>
 
       {orderedPosts.map((post) => (
         <PostCard

@@ -96,7 +96,7 @@ const PostCard = (props) => {
   };
 
   return (
-    <Container component="main" maxWidth="sm">
+    <Container component="main" maxWidth="md">
       <Card className={classes.root} variant="outlined">
         <KarmaWrapper>
           <KarmaCounter

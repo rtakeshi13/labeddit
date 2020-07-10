@@ -6,6 +6,8 @@ import LanguageContext from "../../contexts/LanguageContext";
 
 import { createPost } from "../../functions/axios";
 
+import Container from "@material-ui/core/Container";
+
 import { FormContainer, Submit, TextInput } from "./styles";
 
 const PostForm = (props) => {
@@ -26,7 +28,7 @@ const PostForm = (props) => {
   };
 
   return (
-    <div>
+    <Container component="main" maxWidth="md">
       <FormContainer onSubmit={handleFormSubmit}>
         <TextInput
           required
@@ -54,7 +56,7 @@ const PostForm = (props) => {
           {languages[selectedLanguage].postButton}
         </Submit>
       </FormContainer>
-    </div>
+    </Container>
   );
 };
 

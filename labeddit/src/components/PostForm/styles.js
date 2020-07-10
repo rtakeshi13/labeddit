@@ -5,8 +5,7 @@ import TextField from "@material-ui/core/TextField";
 export const FormContainer = styled.form`
   display: grid;
   justify-items: center;
-  width: 50%;
-  margin: 20px auto 20px auto;
+  margin-top: 20px;
 `;
 
 export const Submit = styled(Button)``;
