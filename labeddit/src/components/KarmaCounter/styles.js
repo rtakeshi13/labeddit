@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import ArrowDownwardIcon from "@material-ui/icons/ArrowDownward";
+import ArrowUpwardIcon from "@material-ui/icons/ArrowUpward";
 
 export const CounterWrapper = styled.div`
   width: 5%;
@@ -9,21 +11,20 @@ export const CounterWrapper = styled.div`
   margin-top: 10px;
 `;
 
-export const UpvoteButton = styled.span`
+export const UpvoteButton = styled(ArrowUpwardIcon)`
   color: ${({ voted }) => (voted ? "#ff8b60" : "black")};
   font-size: 2em;
   cursor: pointer;
 `;
 
-export const DownvoteButton = styled.span`
+export const DownvoteButton = styled(ArrowDownwardIcon)`
   color: ${({ voted }) => (voted ? "#9494ff" : "black")};
-  font-size: 2.5em;
+  font-size: 2em;
   cursor: pointer;
-  margin-top: -10px;
 `;
 
 export const VotesCount = styled.span`
   color: ${({ direction }) =>
     !direction ? "black" : direction === 1 ? "#ff8b60" : "#9494ff"};
-  font-size: 1.4em;
+  font-size: 1.7em;
 `;
