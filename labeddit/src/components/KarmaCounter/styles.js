@@ -12,19 +12,19 @@ export const CounterWrapper = styled.div`
 `;
 
 export const UpvoteButton = styled(ArrowUpwardIcon)`
-  color: ${({ voted }) => (voted ? "#ff8b60" : "black")};
+  color: ${({ voted }) => (voted ? "#ff8b60" : "grey")};
   font-size: 2em;
   cursor: pointer;
 `;
 
 export const DownvoteButton = styled(ArrowDownwardIcon)`
-  color: ${({ voted }) => (voted ? "#9494ff" : "black")};
+  color: ${({ voted }) => (voted ? "#9494ff" : "grey")};
   font-size: 2em;
   cursor: pointer;
 `;
 
 export const VotesCount = styled.span`
   color: ${({ direction }) =>
-    !direction ? "black" : direction === 1 ? "#ff8b60" : "#9494ff"};
+    !direction ? "grey" : direction === 1 ? "#ff8b60" : "#9494ff"};
   font-size: 1.7em;
 `;
