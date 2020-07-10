@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const SortWrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-right: 10px;
 `;
 
-export const Container = styled.div`
+export const MainContainer = styled.div`
   margin-bottom: 16px;
   display: flex;
   flex-direction: column;

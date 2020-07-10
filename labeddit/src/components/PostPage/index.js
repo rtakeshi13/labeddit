@@ -15,8 +15,9 @@ import CommentCard from "../CommentCard";
 
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Container from "@material-ui/core/Container";
 
-import { SortWrapper, Container, NewComment, Form } from "./styles";
+import { SortWrapper, MainContainer, NewComment, Form } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -69,7 +70,7 @@ const PostPage = () => {
   }
 
   return post ? (
-    <Container>
+    <MainContainer>
       <Helmet>
         <title>{post.title}</title>
       </Helmet>
@@ -97,30 +98,32 @@ const PostPage = () => {
           </button>
         </Form>
       </NewComment>
-      <SortWrapper>
-        <div />
-        <label>
-          {languages[selectedLanguage].sortLabel}{" "}
-          <select onChange={handleOrderChange}>
-            <option value="created_new">
-              {languages[selectedLanguage].newest}
-            </option>
-            <option value="created_old">
-              {languages[selectedLanguage].oldest}
-            </option>
-            <option value="votes_more">
-              {languages[selectedLanguage].upvotes}
-            </option>
-            <option value="votes_less">
-              {languages[selectedLanguage].downvotes}
-            </option>
-          </select>
-        </label>
-      </SortWrapper>
+      <Container maxWidth="md" style={{ marginTop: "20px" }}>
+        <SortWrapper>
+          <div />
+          <label>
+            {languages[selectedLanguage].sortLabel}{" "}
+            <select onChange={handleOrderChange}>
+              <option value="created_new">
+                {languages[selectedLanguage].newest}
+              </option>
+              <option value="created_old">
+                {languages[selectedLanguage].oldest}
+              </option>
+              <option value="votes_more">
+                {languages[selectedLanguage].upvotes}
+              </option>
+              <option value="votes_less">
+                {languages[selectedLanguage].downvotes}
+              </option>
+            </select>
+          </label>
+        </SortWrapper>
+      </Container>
       {orderedComments.map((comment) => (
         <CommentCard key={comment.id} postId={post.id} comment={comment} />
       ))}
-    </Container>
+    </MainContainer>
   ) : (
     <div className={classes.root}>
       <CircularProgress color="secondary" />
