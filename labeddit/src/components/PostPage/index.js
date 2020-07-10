@@ -39,9 +39,13 @@ const PostPage = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    await createComment(post.id, form);
-    resetForm();
-    getPostDetails(postId);
+    const success = await createComment(post.id, form);
+    if (success) {
+      resetForm();
+      getPostDetails(postId);
+    } else {
+      alert(languages[selectedLanguage].postErrorAlert);
+    }
   };
 
   const handleOrderChange = (event) => {

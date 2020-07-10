@@ -21,9 +21,8 @@ const PostForm = (props) => {
     if (success) {
       resetForm();
       getPosts();
-      alert("Post criado com sucesso");
     } else {
-      alert("Erro ao criar Post");
+      alert(languages[selectedLanguage].postErrorAlert);
     }
   };
 
