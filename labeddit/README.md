@@ -3,7 +3,7 @@
 ### O que funciona
 
 - descreva
-  -oi
+ descrevendo
 
 ### O que não funciona
 
