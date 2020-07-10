@@ -121,7 +121,11 @@ const SignupPage = () => {
             {languages[selectedLanguage].signupLabel}
           </Button>
         </form>
-        <Link href="http://localhost:3000/login" variant="body2">
+        <Link
+          onClick={() => history.push("/login")}
+          style={{ cursor: "pointer" }}
+          variant="body2"
+        >
           {languages[selectedLanguage].loginLinkText}
         </Link>
       </div>
