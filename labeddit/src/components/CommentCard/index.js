@@ -75,7 +75,7 @@ const CommentCard = (props) => {
             postId={postId}
             userVoteDirection={comment.userVoteDirection}
             votesCount={comment.votesCount}
-            commentId={comment.commentId}
+            commentId={comment.id}
           />
           <CardContent>
             <Typography

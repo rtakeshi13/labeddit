@@ -49,26 +49,19 @@ const PostPage = () => {
 
   let orderedComments;
   if (post) {
+    orderedComments = post.comments;
     switch (order) {
       case "created_new":
-        orderedComments = post.comments.sort(
-          (a, b) => b.createdAt - a.createdAt
-        );
+        orderedComments.sort((a, b) => b.createdAt - a.createdAt);
         break;
       case "created_old":
-        orderedComments = post.comments.sort(
-          (a, b) => a.createdAt - b.createdAt
-        );
+        orderedComments.sort((a, b) => a.createdAt - b.createdAt);
         break;
       case "votes_more":
-        orderedComments = post.comments.sort(
-          (a, b) => b.votesCount - a.votesCount
-        );
+        orderedComments.sort((a, b) => b.votesCount - a.votesCount);
         break;
       case "votes_less":
-        orderedComments = post.comments.sort(
-          (a, b) => a.votesCount - b.votesCount
-        );
+        orderedComments.sort((a, b) => a.votesCount - b.votesCount);
         break;
       default:
         break;
@@ -124,7 +117,7 @@ const PostPage = () => {
           </select>
         </label>
       </SortWrapper>
-      {post.comments.map((comment) => (
+      {orderedComments.map((comment) => (
         <CommentCard key={comment.id} postId={post.id} comment={comment} />
       ))}
     </Container>
