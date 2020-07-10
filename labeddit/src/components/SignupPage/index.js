@@ -64,7 +64,7 @@ const SignupPage = () => {
           placeholder={languages[selectedLanguage].passwordLabel}
           onChange={handleFormChange}
         />
-        <Button variant="contained">
+        <Button variant="contained" type="submit">
           {languages[selectedLanguage].signupLabel}
         </Button>
       </form>

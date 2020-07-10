@@ -10,6 +10,7 @@ import LanguageContext from "../../contexts/LanguageContext";
 
 import { createComment } from "../../functions/axios";
 
+import CommentForm from "../CommentForm";
 import PostCard from "../PostCard";
 import CommentCard from "../CommentCard";
 
@@ -17,7 +18,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Container from "@material-ui/core/Container";
 
-import { SortWrapper, MainContainer, NewComment, Form } from "./styles";
+import { SortWrapper, MainContainer } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -89,19 +90,9 @@ const PostPage = () => {
         userVoteDirection={post.userVoteDirection}
         createdAt={post.createdAt}
       />
-      <NewComment>
-        <Form onSubmit={handleFormSubmit}>
-          <textarea
-            name="text"
-            value={form.text}
-            onChange={handleInputChange}
-            placeholder={languages[selectedLanguage].commentPlaceholder}
-          />
-          <button type="submit">
-            {languages[selectedLanguage].sendComment}
-          </button>
-        </Form>
-      </NewComment>
+
+      <CommentForm postId={postId} getPostDetails={getPostDetails} />
+
       <Container maxWidth="md" style={{ marginTop: "20px" }}>
         <SortWrapper>
           <div />

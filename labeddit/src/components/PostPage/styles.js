@@ -11,18 +11,3 @@ export const MainContainer = styled.div`
   flex-direction: column;
   align-items: center;
 `;
-
-export const NewComment = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-export const Form = styled.form`
-  width: 50vw;
-  input {
-    width: 100%;
-  }
-  button {
-    display: block;
-  }
-`;
