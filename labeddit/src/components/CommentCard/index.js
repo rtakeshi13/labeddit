@@ -82,6 +82,7 @@ const CommentCard = (props) => {
               className={classes.title}
               color="textSecondary"
               gutterBottom
+              style={{ whiteSpace: "pre-wrap", wordBreak: "break-all" }}
             >
               {`${languages[selectedLanguage].commentedBy} ${
                 comment.username
@@ -89,10 +90,7 @@ const CommentCard = (props) => {
             </Typography>
             <Typography
               className={classes.text}
-              style={{
-                whiteSpace: "pre-wrap",
-                wordBreak: "break-all",
-              }}
+              style={{ whiteSpace: "pre-wrap", wordBreak: "break-all" }}
             >
               {comment.text}
             </Typography>
