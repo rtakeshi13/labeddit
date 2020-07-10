@@ -8,8 +8,6 @@ import { Helmet } from "react-helmet-async";
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
 
-import { createComment } from "../../functions/axios";
-
 import CommentForm from "../CommentForm";
 import PostCard from "../PostCard";
 import CommentCard from "../CommentCard";
