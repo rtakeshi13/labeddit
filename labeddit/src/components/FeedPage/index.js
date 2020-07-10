@@ -10,21 +10,14 @@ import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
 import { SortWrapper } from "./styles";
 
-const FormContainer = styled.form`
-display: grid;
-justify-items: center;
-margin-top: 20px;
-`
 const useStyles = makeStyles((theme) => ({
-    root: {
-      display: "flex",
-      justifyContent: "center",
-      alignItems: "center",
-      height: "100vh",
-    },
-  }));
-
-
+  root: {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    height: "100vh",
+  },
+}));
 
 const FeedPage = () => {
   const [posts, getPosts] = usePosts();
@@ -36,24 +29,6 @@ const FeedPage = () => {
   const handleOrderChange = (event) => {
     setOrder(event.target.value);
   };
-
-  const [form, handleFormChange] = useForm({ text: "", title: "" });
-
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        const response = await createPost(form);
-        console.log(response)
-        if (response) {
-          getPosts();
-          alert("Post criado com sucesso")
-          
-        } else {
-          alert("Erro ao criar Post")
-        }
-    };
-
-
-  const handlePostClick = (postId) => history.push(`posts/${postId}`);
 
   const orderedPosts = posts;
   switch (order) {

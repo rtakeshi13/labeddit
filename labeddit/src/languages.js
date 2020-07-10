@@ -9,7 +9,7 @@ export const languages = {
     signupLabel: "Sign Up",
     commentCounterText: "comments",
     sendComment: "send comment",
-    commentPlaceholder: "comment here"
+    commentPlaceholder: "comment here",
     sortLabel: "Sort by",
     newest: "Newest",
     oldest: "Oldest",
@@ -36,7 +36,7 @@ export const languages = {
     signupLabel: "Cadastre-se",
     commentCounterText: "comentários",
     sendComment: "enviar comentário",
-    commentPlaceholder: "comente aqui"
+    commentPlaceholder: "comente aqui",
     sortLabel: "Ordenar por",
     newest: "Mais novos",
     oldest: "Mais antigos",
