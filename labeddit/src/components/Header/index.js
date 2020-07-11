@@ -78,7 +78,7 @@ const Header = (props) => {
               </Box>
             </div>
             <div>
-              <Button onClick={handleLogout}>
+              <Button onClick={handleLogout} style={{ marginRight: "10px" }}>
                 {languages[selectedLanguage].logoutLabel}
               </Button>
               <select value={selectedLanguage} onChange={handleLanguageSelect}>
