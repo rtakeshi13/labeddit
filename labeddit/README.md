@@ -25,7 +25,7 @@
 
 ## O que não funciona
 
-- ¯\_(ツ)\_/¯
+- ¯\\\_(ツ)\_/¯
 
 ## Link Surge
 
