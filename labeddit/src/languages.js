@@ -32,6 +32,7 @@ export const languages = {
     postButton: "Submit",
     postErrorAlert: "Something went wrong, please try again later",
     commentTextPlaceholder: "Write your comment here...",
+    postFormLabel: "Submit a new text post:",
   },
   pt: {
     loginLabel: "Entrar",
@@ -66,5 +67,6 @@ export const languages = {
     postButton: "Enviar",
     postErrorAlert: "Algo deu errado, por favor tente novamente mais tarde",
     commentTextPlaceholder: "Escreva seu comentário aqui...",
+    postFormLabel: "Enviar uma nova postagem de texto:",
   },
 };

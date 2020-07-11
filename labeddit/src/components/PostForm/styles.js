@@ -8,7 +8,9 @@ export const FormContainer = styled.form`
   margin-top: 20px;
 `;
 
-export const Submit = styled(Button)``;
+export const Submit = styled(Button)`
+  margin-bottom: 10px;
+`;
 
 export const TextInput = styled(TextField)`
   margin-bottom: 10px;
