@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import usePostDetail from "../../hooks/usePostDetail";
-import useForm from "../../hooks/useForm";
 
 import { Helmet } from "react-helmet-async";
 
@@ -32,7 +31,6 @@ const PostPage = () => {
   const classes = useStyles();
   const { postId } = useParams();
   const [post, getPostDetails] = usePostDetail(postId);
-  const history = useHistory();
   const [order, setOrder] = useState("created_new");
 
   const handleOrderChange = (event) => {

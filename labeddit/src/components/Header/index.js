@@ -82,8 +82,8 @@ const Header = (props) => {
                 {languages[selectedLanguage].logoutLabel}
               </Button>
               <select value={selectedLanguage} onChange={handleLanguageSelect}>
-                <option value={"pt"}>PT</option>
-                <option value={"en"}>EN</option>
+                <option value={"pt"}>🇧🇷</option>
+                <option value={"en"}>🇺🇸</option>
               </select>
             </div>
           </Toolbar>
