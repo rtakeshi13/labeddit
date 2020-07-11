@@ -7,6 +7,8 @@ import LanguageContext from "../../contexts/LanguageContext";
 import { createComment } from "../../functions/axios";
 
 import Container from "@material-ui/core/Container";
+import Card from "@material-ui/core/Card";
+import Typography from "@material-ui/core/Typography";
 
 import { FormContainer, Submit, TextInput } from "./styles";
 
@@ -28,23 +30,34 @@ const CommentForm = (props) => {
 
   return (
     <Container component="main" maxWidth="md">
-      <FormContainer onSubmit={handleFormSubmit}>
-        <TextInput
-          required
-          value={form.text}
-          variant="outlined"
-          label={languages[selectedLanguage].commentTextPlaceholder}
-          type="text"
-          name="text"
-          onChange={handleFormChange}
-          multiline
-          rows={5}
-          fullWidth
-        />
-        <Submit type="submit" variant="contained">
-          {languages[selectedLanguage].postButton}
-        </Submit>
-      </FormContainer>
+      <Card variant="outlined" style={{ marginTop: "20px" }}>
+        <FormContainer onSubmit={handleFormSubmit}>
+          <div style={{ width: "90%" }}>
+            <Typography
+              variant="h6"
+              style={{ marginBottom: "5px", color: "#2e2e2d" }}
+            >
+              {languages[selectedLanguage].commentFormLabel}
+            </Typography>
+            <TextInput
+              required
+              value={form.text}
+              variant="outlined"
+              label={languages[selectedLanguage].commentTextPlaceholder}
+              type="text"
+              name="text"
+              onChange={handleFormChange}
+              multiline
+              rows={5}
+              fullWidth
+            />{" "}
+          </div>
+
+          <Submit type="submit" variant="contained">
+            {languages[selectedLanguage].postButton}
+          </Submit>
+        </FormContainer>{" "}
+      </Card>
     </Container>
   );
 };

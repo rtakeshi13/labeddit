@@ -33,6 +33,7 @@ export const languages = {
     postErrorAlert: "Something went wrong, please try again later",
     commentTextPlaceholder: "Write your comment here...",
     postFormLabel: "Submit a new text post:",
+    commentFormLabel: "Submit a new comment:",
   },
   pt: {
     loginLabel: "Entrar",
@@ -68,5 +69,6 @@ export const languages = {
     postErrorAlert: "Algo deu errado, por favor tente novamente mais tarde",
     commentTextPlaceholder: "Escreva seu comentário aqui...",
     postFormLabel: "Enviar uma nova postagem de texto:",
+    commentFormLabel: "Enviar um novo comentário:",
   },
 };
