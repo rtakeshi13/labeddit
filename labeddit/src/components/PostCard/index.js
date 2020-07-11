@@ -78,6 +78,9 @@ const PostCard = (props) => {
       // menos de 1 dia
       const ageInHours = (ageInMinutes / 60).toFixed(0);
       return `${ageInHours} ${languages[selectedLanguage].hours}`;
+    } else if (ageInMinutes < 2879) {
+      // menos de 2 dias
+      return `1 ${languages[selectedLanguage].day}`;
     } else if (ageInMinutes < 10079) {
       // menos de 1 semana
       const ageInDays = (ageInMinutes / 1440).toFixed(0);
