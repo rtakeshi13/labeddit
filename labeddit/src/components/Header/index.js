@@ -62,6 +62,8 @@ const Header = (props) => {
               color="secondary"
               variant="h6"
               className={classes.title}
+              onClick={() => history.push("/posts")}
+              style={{ cursor: "pointer" }}
             >
               LabEddit
             </Typography>
