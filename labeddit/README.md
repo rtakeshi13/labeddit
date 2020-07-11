@@ -21,6 +21,7 @@
 - Compartilhar
 - Loading
 - Ordenar postagens e comentarios
+- Internacionalização
 
 ## O que não funciona
 
