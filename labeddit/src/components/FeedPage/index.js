@@ -34,22 +34,25 @@ const FeedPage = () => {
     setOrder(event.target.value);
   };
 
-  const orderedPosts = posts;
-  switch (order) {
-    case "created_new":
-      orderedPosts.sort((a, b) => b.createdAt - a.createdAt);
-      break;
-    case "created_old":
-      orderedPosts.sort((a, b) => a.createdAt - b.createdAt);
-      break;
-    case "votes_more":
-      orderedPosts.sort((a, b) => b.votesCount - a.votesCount);
-      break;
-    case "votes_less":
-      orderedPosts.sort((a, b) => a.votesCount - b.votesCount);
-      break;
-    default:
-      break;
+  let orderedPosts;
+  if (posts) {
+    orderedPosts = posts;
+    switch (order) {
+      case "created_new":
+        orderedPosts.sort((a, b) => b.createdAt - a.createdAt);
+        break;
+      case "created_old":
+        orderedPosts.sort((a, b) => a.createdAt - b.createdAt);
+        break;
+      case "votes_more":
+        orderedPosts.sort((a, b) => b.votesCount - a.votesCount);
+        break;
+      case "votes_less":
+        orderedPosts.sort((a, b) => a.votesCount - b.votesCount);
+        break;
+      default:
+        break;
+    }
   }
 
   return posts.length > 0 ? (

@@ -9,6 +9,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
 import { useHistory } from "react-router-dom";
 
@@ -42,35 +43,49 @@ const Header = (props) => {
   const [selectedLanguage, setLanguage] = useContext(LanguageContext);
   const classes = useStyles();
   const history = useHistory();
+
   const handleLanguageSelect = (event) => {
     localStorage.setItem("language", event.target.value);
     setLanguage(event.target.value);
+  };
+
+  const handleLogout = () => {
+    localStorage.removeItem("labeddit");
+    history.push("/login");
   };
 
   return (
     <React.Fragment>
       <ElevationScroll {...props}>
         <AppBar className={classes.color}>
-          <Toolbar>
-            <Typography
-              color="secondary"
-              variant="h6"
-              className={classes.title}
-            >
-              LOGO
-            </Typography>
-            <Button
-              onClick={() => {
-                localStorage.removeItem("labeddit");
-                history.push("/login");
-              }}
-            >
-              {languages[selectedLanguage].logoutLabel}
-            </Button>
-            <select value={selectedLanguage} onChange={handleLanguageSelect}>
-              <option value={"pt"}>PT</option>
-              <option value={"en"}>EN</option>
-            </select>
+          <Toolbar
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <Box maxWidth={"sm"}>
+                <Typography
+                  color="secondary"
+                  variant="h6"
+                  className={classes.title}
+                  onClick={() => history.push("/posts")}
+                  style={{ cursor: "pointer" }}
+                >
+                  LabEddit
+                </Typography>
+              </Box>
+            </div>
+            <div>
+              <Button onClick={handleLogout} style={{ marginRight: "10px" }}>
+                {languages[selectedLanguage].logoutLabel}
+              </Button>
+              <select value={selectedLanguage} onChange={handleLanguageSelect}>
+                <option value={"pt"}>🇧🇷</option>
+                <option value={"en"}>🇺🇸</option>
+              </select>
+            </div>
           </Toolbar>
         </AppBar>
       </ElevationScroll>

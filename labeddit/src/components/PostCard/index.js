@@ -78,6 +78,9 @@ const PostCard = (props) => {
       // menos de 1 dia
       const ageInHours = (ageInMinutes / 60).toFixed(0);
       return `${ageInHours} ${languages[selectedLanguage].hours}`;
+    } else if (ageInMinutes < 2879) {
+      // menos de 2 dias
+      return `1 ${languages[selectedLanguage].day}`;
     } else if (ageInMinutes < 10079) {
       // menos de 1 semana
       const ageInDays = (ageInMinutes / 1440).toFixed(0);
@@ -109,15 +112,24 @@ const PostCard = (props) => {
               className={classes.title}
               color="textSecondary"
               gutterBottom
+              style={{ whiteSpace: "pre-wrap", wordBreak: "break-all" }}
             >
               {`${
                 languages[selectedLanguage].postedBy
               } ${userName} ${formatPostAge(createdAt)}`}
             </Typography>
-            <Typography className={classes.pos} variant="h5" component="h2">
+            <Typography
+              className={classes.pos}
+              variant="h5"
+              component="h2"
+              style={{ whiteSpace: "pre-wrap", wordBreak: "break-all" }}
+            >
               {title}
             </Typography>
-            <Typography className={classes.text} style={{ whiteSpace: "pre" }}>
+            <Typography
+              className={classes.text}
+              style={{ whiteSpace: "pre-wrap", wordBreak: "break-all" }}
+            >
               {text}
             </Typography>
             <CardFooter

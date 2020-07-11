@@ -37,20 +37,16 @@ const KarmaCounter = (props) => {
   return (
     <CounterWrapper>
       <UpvoteButton
-        voted={state.userVoteDirection === 1 ? true : false}
+        voted={state.userVoteDirection === 1 ? 1 : 0}
         onClick={upvote}
-      >
-        +
-      </UpvoteButton>
+      />
       <VotesCount direction={state.userVoteDirection}>
         {state.votesCount}
       </VotesCount>
       <DownvoteButton
-        voted={state.userVoteDirection === -1 ? true : false}
+        voted={state.userVoteDirection === -1 ? 1 : 0}
         onClick={downvote}
-      >
-        -
-      </DownvoteButton>
+      />
     </CounterWrapper>
   );
 };
