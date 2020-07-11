@@ -9,6 +9,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import useScrollTrigger from "@material-ui/core/useScrollTrigger";
 import Typography from "@material-ui/core/Typography";
+import Box from "@material-ui/core/Box";
 
 import { useHistory } from "react-router-dom";
 
@@ -57,23 +58,34 @@ const Header = (props) => {
     <React.Fragment>
       <ElevationScroll {...props}>
         <AppBar className={classes.color}>
-          <Toolbar>
-            <Typography
-              color="secondary"
-              variant="h6"
-              className={classes.title}
-              onClick={() => history.push("/posts")}
-              style={{ cursor: "pointer" }}
-            >
-              LabEddit
-            </Typography>
-            <Button onClick={handleLogout}>
-              {languages[selectedLanguage].logoutLabel}
-            </Button>
-            <select value={selectedLanguage} onChange={handleLanguageSelect}>
-              <option value={"pt"}>PT</option>
-              <option value={"en"}>EN</option>
-            </select>
+          <Toolbar
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <div>
+              <Box maxWidth={"sm"}>
+                <Typography
+                  color="secondary"
+                  variant="h6"
+                  className={classes.title}
+                  onClick={() => history.push("/posts")}
+                  style={{ cursor: "pointer" }}
+                >
+                  LabEddit
+                </Typography>
+              </Box>
+            </div>
+            <div>
+              <Button onClick={handleLogout}>
+                {languages[selectedLanguage].logoutLabel}
+              </Button>
+              <select value={selectedLanguage} onChange={handleLanguageSelect}>
+                <option value={"pt"}>PT</option>
+                <option value={"en"}>EN</option>
+              </select>
+            </div>
           </Toolbar>
         </AppBar>
       </ElevationScroll>
