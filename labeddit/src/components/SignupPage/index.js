@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
+import UserContext from "../../contexts/UserContext";
 
 import { signup } from "../../functions/axios";
 
@@ -44,6 +45,7 @@ const SignupPage = () => {
   const classes = useStyles();
   const history = useHistory();
   const [selectedLanguage] = useContext(LanguageContext);
+  const { setUserData } = useContext(UserContext);
 
   const [form, handleFormChange] = useForm({
     email: "",
@@ -56,6 +58,7 @@ const SignupPage = () => {
     const response = await signup(form);
     if (response.token) {
       localStorage.setItem("labeddit", JSON.stringify(response));
+      setUserData(response);
       history.push("/posts");
     } else {
       window.alert(response.message);

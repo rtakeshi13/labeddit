@@ -7,7 +7,7 @@ const ProtectedRoute = (props) => {
   const { path, component } = props;
   const history = useHistory();
   const { userData } = useContext(UserContext);
-
+  console.log(userData);
   !userData && history.push("/login");
   return userData ? <Route exact path={path} component={component} /> : null;
 };
