@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async";
 
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
+import UserContext from "../../contexts/UserContext";
 
 import { login } from "../../functions/axios";
 
@@ -42,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 
 const LoginPage = () => {
   const [selectedLanguage] = useContext(LanguageContext);
+  const { setUserData } = useContext(UserContext);
   const classes = useStyles();
   const history = useHistory();
   const [form, handleFormChange] = useForm({ email: "", password: "" });
@@ -51,6 +53,7 @@ const LoginPage = () => {
     const response = await login(form);
     if (response.token) {
       localStorage.setItem("labeddit", JSON.stringify(response));
+      setUserData(response);
       history.push("/posts");
     } else {
       window.alert(response.message);
