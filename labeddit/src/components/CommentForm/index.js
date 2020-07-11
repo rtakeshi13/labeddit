@@ -30,7 +30,7 @@ const CommentForm = (props) => {
 
   return (
     <Container component="main" maxWidth="md">
-      <Card variant="outlined" style={{ marginTop: "20px" }}>
+      <Card variant="outlined" style={{ marginTop: "20px", minWidth: "275px" }}>
         <FormContainer onSubmit={handleFormSubmit}>
           <div style={{ width: "90%" }}>
             <Typography
@@ -50,13 +50,12 @@ const CommentForm = (props) => {
               multiline
               rows={5}
               fullWidth
-            />{" "}
+            />
           </div>
-
           <Submit type="submit" variant="contained">
             {languages[selectedLanguage].postButton}
           </Submit>
-        </FormContainer>{" "}
+        </FormContainer>
       </Card>
     </Container>
   );

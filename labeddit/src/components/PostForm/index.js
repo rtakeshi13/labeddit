@@ -30,7 +30,7 @@ const PostForm = (props) => {
 
   return (
     <Container component="main" maxWidth="md">
-      <Card variant="outlined" style={{ marginTop: "20px" }}>
+      <Card variant="outlined" style={{ marginTop: "20px", minWidth: "275px" }}>
         <FormContainer onSubmit={handleFormSubmit}>
           <div style={{ width: "90%" }}>
             <Typography
