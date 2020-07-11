@@ -34,6 +34,7 @@ export const languages = {
     commentTextPlaceholder: "Write your comment here...",
     postFormLabel: "Submit a new text post:",
     commentFormLabel: "Submit a new comment:",
+    welcome: "Welcome",
   },
   pt: {
     loginLabel: "Entrar",
@@ -70,5 +71,6 @@ export const languages = {
     commentTextPlaceholder: "Escreva seu comentário aqui...",
     postFormLabel: "Enviar uma nova postagem de texto:",
     commentFormLabel: "Enviar um novo comentário:",
+    welcome: "Bem-vindo",
   },
 };

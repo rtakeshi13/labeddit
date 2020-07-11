@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 
 import LanguageContext from "../../contexts/LanguageContext";
+import UserContext from "../../contexts/UserContext";
 import { languages } from "../../languages";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -41,6 +42,7 @@ function ElevationScroll(props) {
 
 const Header = (props) => {
   const [selectedLanguage, setLanguage] = useContext(LanguageContext);
+  const { userData, setUserData } = useContext(UserContext);
   const classes = useStyles();
   const history = useHistory();
 
@@ -51,6 +53,7 @@ const Header = (props) => {
 
   const handleLogout = () => {
     localStorage.removeItem("labeddit");
+    setUserData();
     history.push("/login");
   };
 
@@ -77,10 +80,20 @@ const Header = (props) => {
                 </Typography>
               </Box>
             </div>
-            <div>
-              <Button onClick={handleLogout} style={{ marginRight: "10px" }}>
-                {languages[selectedLanguage].logoutLabel}
-              </Button>
+            <div style={{ display: "flex" }}>
+              {userData && (
+                <div>
+                  <span style={{ color: "black", marginRight: "10px" }}>
+                    {`${languages[selectedLanguage].welcome} ${userData.user.username}!`}
+                  </span>
+                  <Button
+                    onClick={handleLogout}
+                    style={{ marginRight: "10px" }}
+                  >
+                    {languages[selectedLanguage].logoutLabel}
+                  </Button>
+                </div>
+              )}
               <select value={selectedLanguage} onChange={handleLanguageSelect}>
                 <option value={"pt"}>🇧🇷</option>
                 <option value={"en"}>🇺🇸</option>

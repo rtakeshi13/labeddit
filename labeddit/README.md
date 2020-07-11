@@ -33,4 +33,7 @@
 
 ## Imagens
 
-![l](https://user-images.githubusercontent.com/10583511/87215186-35ec7680-c30a-11ea-9b25-e70a6eef6b67.png)
+![login](https://user-images.githubusercontent.com/10583511/87234093-0c802900-c3a4-11ea-8f4d-18016df95d4f.png)
+![signup](https://user-images.githubusercontent.com/10583511/87234094-0ee28300-c3a4-11ea-9a2f-f47f9442fd28.png)
+![feed](https://user-images.githubusercontent.com/10583511/87234095-10ac4680-c3a4-11ea-8706-0bf028cd49df.png)
+![post](https://user-images.githubusercontent.com/10583511/87234096-130ea080-c3a4-11ea-89cc-d61bce0938dd.png)
