@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { SortWrapper, SearchWrapper } from "./styles";
+import { SortWrapper, SearchWrapper, SearchSortBar } from "./styles";
 import Container from "@material-ui/core/Container";
 import { languages } from "../../languages";
 import LanguageContext from "../../contexts/LanguageContext";
@@ -27,40 +27,41 @@ const FeedFilter = (props) => {
 
   return (
     <Container maxWidth="md" style={{ marginTop: "20px" }}>
-      <SortWrapper>
+      <SearchSortBar>
         <SearchWrapper>
           <input
             value={searchInput}
             onChange={handleSearchChange}
             placeholder={languages[selectedLanguage].searchPlaceholder}
           />
-          <div>
-            <button onClick={handleSearchClick}>
-              {languages[selectedLanguage].searchButton}
-            </button>
-            <button onClick={handleClearClick}>
-              {languages[selectedLanguage].clearSearchButton}
-            </button>
-          </div>
+          <button onClick={handleSearchClick}>
+            {languages[selectedLanguage].searchButton}
+          </button>
+          <button onClick={handleClearClick}>
+            {languages[selectedLanguage].clearSearchButton}
+          </button>
         </SearchWrapper>
-        <label>
-          {languages[selectedLanguage].sortLabel}{" "}
-          <select onChange={handleOrderChange}>
-            <option value="created_new">
-              {languages[selectedLanguage].newest}
-            </option>
-            <option value="created_old">
-              {languages[selectedLanguage].oldest}
-            </option>
-            <option value="votes_more">
-              {languages[selectedLanguage].upvotes}
-            </option>
-            <option value="votes_less">
-              {languages[selectedLanguage].downvotes}
-            </option>
-          </select>
-        </label>
-      </SortWrapper>
+        <SortWrapper>
+          <div />
+          <label>
+            {languages[selectedLanguage].sortLabel}{" "}
+            <select onChange={handleOrderChange}>
+              <option value="created_new">
+                {languages[selectedLanguage].newest}
+              </option>
+              <option value="created_old">
+                {languages[selectedLanguage].oldest}
+              </option>
+              <option value="votes_more">
+                {languages[selectedLanguage].upvotes}
+              </option>
+              <option value="votes_less">
+                {languages[selectedLanguage].downvotes}
+              </option>
+            </select>
+          </label>
+        </SortWrapper>
+      </SearchSortBar>
     </Container>
   );
 };
