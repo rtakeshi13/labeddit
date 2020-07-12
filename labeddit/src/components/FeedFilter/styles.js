@@ -17,6 +17,7 @@ export const SearchWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr auto auto;
   margin-right: 15px;
+  gap: 5px;
   @media (max-width: 500px) {
     margin-right: 0px;
   }
