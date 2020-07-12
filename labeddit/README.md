@@ -20,7 +20,7 @@
 - Logout
 - Compartilhar
 - Loading
-- Ordenar postagens e comentarios
+- Ordenar postagens e comentários
 - Internacionalização
 - Pesquisa
 
