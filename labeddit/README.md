@@ -22,6 +22,7 @@
 - Loading
 - Ordenar postagens e comentarios
 - Internacionalização
+- Pesquisa
 
 ## O que não funciona
 
