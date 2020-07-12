@@ -47,7 +47,13 @@ const FeedPage = () => {
   }
 
   if (orderedPosts && search) {
-    const regex = new RegExp(search.split(" ").join("|"), "i");
+    const regex = new RegExp(
+      search
+        .split(" ")
+        .map((item) => `(?=.*${item})`)
+        .join(""),
+      "i"
+    );
     orderedPosts = orderedPosts.filter(
       (post) =>
         regex.test(post.title) ||
