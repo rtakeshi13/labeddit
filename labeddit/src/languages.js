@@ -35,6 +35,9 @@ export const languages = {
     postFormLabel: "Submit a new text post:",
     commentFormLabel: "Submit a new comment:",
     welcome: "Welcome",
+    searchPlaceholder: "Search by post text, title or username...",
+    searchButton: "Search",
+    clearSearchButton: "Clear",
   },
   pt: {
     loginLabel: "Entrar",
@@ -72,5 +75,8 @@ export const languages = {
     postFormLabel: "Enviar uma nova postagem de texto:",
     commentFormLabel: "Enviar um novo comentário:",
     welcome: "Bem-vindo",
+    searchPlaceholder: "Pesquisar por texto, título ou nome de usuário",
+    searchButton: "Pesquisar",
+    clearSearchButton: "Limpar",
   },
 };
