@@ -1,19 +1,14 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import usePosts from "../../hooks/usePosts";
 
 import { Helmet } from "react-helmet-async";
 
-import { languages } from "../../languages";
-import LanguageContext from "../../contexts/LanguageContext";
-
 import PostForm from "../PostForm";
 import PostCard from "../PostCard";
+import FeedFilter from "../FeedFilter";
 
 import { makeStyles } from "@material-ui/core/styles";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import Container from "@material-ui/core/Container";
-
-import { SortWrapper } from "./styles";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,11 +23,7 @@ const FeedPage = () => {
   const [posts, getPosts] = usePosts();
   const classes = useStyles();
   const [order, setOrder] = useState("created_new");
-  const [selectedLanguage] = useContext(LanguageContext);
-
-  const handleOrderChange = (event) => {
-    setOrder(event.target.value);
-  };
+  const [search, setSearch] = useState();
 
   let orderedPosts;
   if (posts) {
@@ -55,6 +46,16 @@ const FeedPage = () => {
     }
   }
 
+  if (orderedPosts && search) {
+    const regex = new RegExp(search.split(" ").join("|"), "i");
+    orderedPosts = orderedPosts.filter(
+      (post) =>
+        regex.test(post.title) ||
+        regex.test(post.text) ||
+        regex.test(post.username)
+    );
+  }
+
   return posts.length > 0 ? (
     <div>
       <Helmet>
@@ -63,28 +64,7 @@ const FeedPage = () => {
 
       <PostForm getPosts={getPosts} />
 
-      <Container maxWidth="md" style={{ marginTop: "20px" }}>
-        <SortWrapper>
-          <div />
-          <label>
-            {languages[selectedLanguage].sortLabel}{" "}
-            <select onChange={handleOrderChange}>
-              <option value="created_new">
-                {languages[selectedLanguage].newest}
-              </option>
-              <option value="created_old">
-                {languages[selectedLanguage].oldest}
-              </option>
-              <option value="votes_more">
-                {languages[selectedLanguage].upvotes}
-              </option>
-              <option value="votes_less">
-                {languages[selectedLanguage].downvotes}
-              </option>
-            </select>
-          </label>
-        </SortWrapper>
-      </Container>
+      <FeedFilter setOrder={setOrder} setSearch={setSearch} />
 
       {orderedPosts.map((post) => (
         <PostCard
