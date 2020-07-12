@@ -34,12 +34,14 @@ const FeedFilter = (props) => {
             onChange={handleSearchChange}
             placeholder={languages[selectedLanguage].searchPlaceholder}
           />
-          <button onClick={handleSearchClick}>
-            {languages[selectedLanguage].searchButton}
-          </button>
-          <button onClick={handleClearClick}>
-            {languages[selectedLanguage].clearSearchButton}
-          </button>
+          <div>
+            <button onClick={handleSearchClick}>
+              {languages[selectedLanguage].searchButton}
+            </button>
+            <button onClick={handleClearClick}>
+              {languages[selectedLanguage].clearSearchButton}
+            </button>
+          </div>
         </SearchWrapper>
         <label>
           {languages[selectedLanguage].sortLabel}{" "}

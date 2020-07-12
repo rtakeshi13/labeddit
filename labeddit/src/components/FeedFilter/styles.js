@@ -8,6 +8,6 @@ export const SortWrapper = styled.div`
 
 export const SearchWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr auto auto;
+  grid-template-columns: 1fr auto;
   margin-right: 15px;
 `;
