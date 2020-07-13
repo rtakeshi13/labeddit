@@ -47,19 +47,31 @@ const FeedPage = () => {
   }
 
   if (orderedPosts && search) {
-    const regex = new RegExp(
-      search
-        .split(" ")
-        .map((item) => `(?=.*${item})`)
-        .join(""),
-      "i"
+    const searchWords = search.split(" ");
+    searchWords.forEach(
+      (word) =>
+        (orderedPosts = orderedPosts.filter(
+          (post) =>
+            post.title.toLowerCase().includes(word.toLowerCase()) ||
+            post.text.toLowerCase().includes(word.toLowerCase()) ||
+            post.username.toLowerCase().includes(word.toLowerCase())
+        ))
     );
-    orderedPosts = orderedPosts.filter(
-      (post) =>
-        regex.test(post.title) ||
-        regex.test(post.text) ||
-        regex.test(post.username)
-    );
+    // Desse jeito todas as palavras tinham que estar presentes no mesmo campo
+    // pode ser util em outra ocasiao, deixarei aqui para referencia
+    // const regex = new RegExp(
+    //   search
+    //     .split(" ")
+    //     .map((item) => `(?=.*${item})`)
+    //     .join(""),
+    //   "i"
+    // );
+    // orderedPosts = orderedPosts.filter(
+    //   (post) =>
+    //     regex.test(post.title) ||
+    //     regex.test(post.text) ||
+    //     regex.test(post.username)
+    // );
   }
 
   return posts.length > 0 ? (
